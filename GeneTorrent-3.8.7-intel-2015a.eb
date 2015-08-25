@@ -11,7 +11,7 @@ homepage = 'https://cghub.ucsc.edu/index.html'
 description = """ GeneTorrent is a command-line tool required to download datasets
 held in repositories at the Cancer Genomics Hub. """
 
-toolchain = {'name': 'foss', 'version': '2015a'}
+toolchain = {'name': 'intel', 'version': '2015a'}
 
 source_urls = ['https://cghub.ucsc.edu/software/downloads/GeneTorrent/%(version)s/']
 sources = [SOURCE_TAR_GZ]
