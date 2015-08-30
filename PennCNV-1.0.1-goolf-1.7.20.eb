@@ -1,0 +1,23 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'ConfigureMake'
+
+name = 'PennCNV'
+version = '1.0.1'
+
+homepage = 'http://penncnv.openbioinformatics.org/en/latest/'
+
+description = """PennCNV is a free software tool for Copy Number Variation
+(CNV) detection from SNP genotyping arrays. Currently it can handle signal
+intensity data from Illumina and Affymetrix arrays. With appropriate
+preparation of file format, it can also handle other types of SNP arrays and
+oligonucleotide arrays."""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+source_urls = ['https://github.com/WangGenomicsLab/PennCNV/archive/']
+sources = [v%(version)s.tar.gz]
+
+moduleclass = 'bio'
