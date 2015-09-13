@@ -26,6 +26,7 @@ dependencies = [
     ('Tk', '8.6.4', '-no-X11'),  # for tcltk
     ('cURL', '7.43.0'),  # for RCurl
     ('libxml2', '2.9.2'),  # for XML
+    ('cairo', '1.14.2'),  # for plotting
 ]
 
 name_tmpl = '%(name)s_%(version)s.tar.gz'
@@ -52,6 +53,7 @@ exts_list = [
     'splines',
     'stats',
     'stats4',
+    'tcltk',
     'tools',
     'utils',
     # non-standard libraries, should be specified with fixed versions!
