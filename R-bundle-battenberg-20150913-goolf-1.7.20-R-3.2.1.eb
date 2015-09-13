@@ -1,0 +1,54 @@
+easyblock = 'Bundle'
+
+name = 'R-bundle-battenberg'
+version = '20150913'
+rver = '3.2.1'
+versionsuffix = '-R-%s' % rver
+
+homepage = 'http://www.r-project.org/'
+description = """R is a free software environment for statistical computing and graphics."""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+# these are extensions for R
+exts_defaultclass = 'RPackage'
+exts_filter = ("R -q --no-save", "library(%(ext_name)s)")
+
+dependencies = [
+    ('R', rver),
+]
+
+ext_options = {
+    'source_urls': [
+        'http://cran.r-project.org/src/contrib/Archive/%(name)s',  # package archive
+        'http://cran.r-project.org/src/contrib/',  # current version of packages
+        'http://cran.freestatistics.org/src/contrib',  # mirror alternative for current packages
+    ],
+    'source_tmpl': '%(name)s_%(version)s.tar.gz'
+}
+
+# !! order of packages is important !!
+exts_list = [
+    'parallel',
+    ('memoise', '0.2.1', ext_options),
+    ('whisker', '0.3-2', ext_options),
+    ('rstudioapi', '0.3.1', ext_options),
+    ('roxygen2', '4.1.1', ext_options),
+    ('git2r', '0.10.1', ext_options),
+    ('rversions', '1.0.0', ext_options),
+    ('devtools', '1.8.0', ext_options),
+    ('shape', '1.4.2', ext_options),
+    ('diagram', '1.6.3', ext_options),
+    ('limSolve', '1.5.5.1', ext_options),
+    ('LIM', '1.4.6', ext_options),
+    ('doParallel', '1.0.8', ext_options),
+]
+
+modextrapaths = {'R_LIBS': ''}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['devtools'],
+}
+
+moduleclass = 'lang'
