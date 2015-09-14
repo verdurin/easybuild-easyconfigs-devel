@@ -24,6 +24,7 @@ dependencies = [
 ]
 
 osdependencies = ['perl-ExtUtils-MakeMaker', 'perl-ExtUtils-Manifest', 'perl-ExtUtils-install',
+'perl-File-Which', 'perl-Pod-Coverage', 'perl-Try-Tiny', 'perl-Test-Fatal', 'perl-Devel-Cover',
 'redhat-lsb-core']
 
 
