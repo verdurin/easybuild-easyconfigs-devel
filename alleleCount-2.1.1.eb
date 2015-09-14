@@ -23,7 +23,7 @@ dependencies = [
     ('SAMtools', '0.1.20'),
 ]
 
-osdependencies = ['perl-ExtUtils-MakeMaker', 'perl-ExtUtils-Manifest']
+osdependencies = ['perl-ExtUtils-MakeMaker', 'perl-ExtUtils-Manifest', 'perl-ExtUtils-install']
 
 
 moduleclass = 'bio'
