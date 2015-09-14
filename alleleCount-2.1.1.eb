@@ -1,0 +1,25 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# allaleCount
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'ConfigureMake'
+
+name = 'allaleCount'
+version = '2.1.1'
+
+homepage = 'http://cancerit.github.io/alleleCount/'
+description = """ The alleleCount package primarily exists to prevent code duplication 
+between some other projects, specifically AscatNGS and Battenburg. The project contains 
+2 equivalent implementations of allele counting code in perl and C for BAM processing.
+The C version of alleleCounter additionally supports CRAM input. """
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://github.com/cancerit/%(name)/archive/']
+sources = ['v%(version).tar.gz']
+
+
+dependencies = 
+
+moduleclass = 'bio'
