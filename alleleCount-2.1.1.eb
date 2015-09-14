@@ -19,8 +19,11 @@ sources = ['v%(version).tar.gz']
 
 
 dependencies = [
-    ('HTSlib', '1.2.1'),
-    ('SAMtools', '1.2.1'),
+    ('HTSlib', '1.2'),
+    ('SAMtools', '0.1.20'),
 ]
+
+osdependencies = ['perl-ExtUtils-MakeMaker', 'perl-ExtUtils-Manifest']
+
 
 moduleclass = 'bio'
