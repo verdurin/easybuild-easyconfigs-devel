@@ -1,0 +1,23 @@
+#easyconfig for https://github.com/ICGC-TCGA-PanCancer/PCAP-core
+
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'ConfigureMake'
+
+name = 'PCAP-core'
+version = '1.10.0'
+
+homepage = 'https://github.com/ICGC-TCGA-PanCancer/PCAP-core'
+
+description = """NGS reference implementations and helper code for the 
+IGCG/TCGA Pan-Cancer Analysis Project"""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+source_urls = ['https://github.com/ICGC-TCGA-PanCancer/PCAP-core/archive/']
+sources = [v%(version)s.tar.gz]
+
+moduleclass = 'bio'
+
