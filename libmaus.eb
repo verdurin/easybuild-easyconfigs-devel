@@ -1,0 +1,22 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'ConfigureMake'
+
+name = 'libmaus'
+version = '0.0.196-release-20150326095654'
+
+homepage = 'https://github.com/gt1/libmaus'
+
+description = """A collection of data structures and algorithms. 
+It includes I/O classes, bitio classes, text indexing classes and 
+BAM sequence alignment files input/output"""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+source_urls = ['https://github.com/gt1/libmaus/archive/']
+sources = [%(version)s.tar.gz]
+
+moduleclass = 'bio'
+
