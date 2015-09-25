@@ -1,0 +1,18 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'ConfigureMake'
+
+name = 'UCSC-tools'
+version = '3.2.2'
+
+homepage = 'http://hgdownload.cse.ucsc.edu/downloads.html'
+description = """ GenomeBrowser and related utilities """
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+
+source_urls = ['http://hgdownload.cse.ucsc.edu/admin/jksrc.v322.zip']
+sources = [SOURCE_ZIP]
+
+moduleclass = 'bio'
