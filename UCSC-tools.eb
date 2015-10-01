@@ -2,7 +2,7 @@
 # Author: Adam Huffman
 # The Francis Crick Institute
 
-easyblock = 'ConfigureMake'
+easyblock = 'MakeCp'
 
 name = 'UCSC-tools'
 version = '3.2.2'
