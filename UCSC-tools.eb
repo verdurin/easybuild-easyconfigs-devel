@@ -194,7 +194,7 @@ files_to_copy = [
     "README"
 ]
 
-builddependencies = [('zlib', '1.2.8', '', ''), ('libpng', '1.6.17', '', '')]
+builddependencies = [('zlib', '1.2.8'), ('libpng', '1.6.17')]
 
 osdependencies = ['mysql-devel',  'rsync']
 
