@@ -16,7 +16,7 @@ sources = [SOURCE_TAR_GZ]
 patches = ['numpy-%(version)s_distutils_multiple-lib-dirs.patch']
 
 python = 'Python'
-pyver = '2.7.3'
+pyver = '2.7.9'
 versionsuffix = '-%s-%s' % (python, pyver)
 
 dependencies = [
