@@ -19,8 +19,8 @@ prebuildopts = ' MACHTYPE=$(echo $MACHTYPE | cut -d"-" -f1) &&'
 prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
 prebuildopts += ' MYSQLINC=$(mysql_config --include | cut -c3-) &&'
 prebuildopts += ' BINDIR=$(pwd)/bin/$MACHTYPE && '
-prebuildopts += ' mkdir $BINDIR && mkdir lib/$MACHTYPE &&'
-prebuildopts += ' cd src && make --log UCSC-tools.log utils userApps blatSuite '
+prebuildopts += ' mkdir -p $BINDIR && mkdir -p lib/$MACHTYPE &&'
+prebuildopts += ' cd src && make utils userApps blatSuite '
 
 parallel = 1
 
