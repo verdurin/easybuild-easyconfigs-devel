@@ -22,8 +22,6 @@ prebuildopts += ' BINDIR=$(pwd)/bin/$MACHTYPE && '
 prebuildopts += ' mkdir -p $BINDIR && mkdir -p lib/$MACHTYPE &&'
 prebuildopts += ' cd src && make utils userApps blatSuite '
 
-parallel = 1
-
 binary_files = ["aarToAxt","addAveMedScoreToPsls", "addCols", "affyPairsToSample",
                 "agpAllToFaFile", "agpCloneCheck", "agpCloneList", "agpToFa",
                 "agpToGl", "agxToBed", "agxToIntronBeds", "agxToTxg", "aladdin",
