@@ -17,13 +17,17 @@ sources = ['jksrc.v322.zip']
 
 prebuildopts = ' MACHTYPE=$(echo $MACHTYPE | cut -d"-" -f1) &&'
 prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
-prebuildopts += ' MYSQLINC=$(mysql_config --include) &&'
+prebuildopts += ' MYSQLINC=$(mysql_config --include | cut -c3-) &&'
 prebuildopts += ' BINDIR=$(pwd)/bin/$MACHTYPE && '
 prebuildopts += ' mkdir $BINDIR && mkdir lib/$MACHTYPE &&'
 prebuildopts += ' cd src && make --log UCSC-tools.log utils userApps blatSuite '
 
 parallel = 1
 
+files_to_copy = [
+
+
+]
 builddependencies = [('zlib', '1.2.8', '', ''), ('libpng', '1.6.17', '', '')]
 
 osdependencies = ['mysql-devel',  'rsync']
