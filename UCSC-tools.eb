@@ -196,7 +196,7 @@ files_to_copy = [
 
 builddependencies = [('zlib', '1.2.8'), ('libpng', '1.6.17')]
 
-osdependencies = ['mysql-devel',  'rsync']
+osdependencies = [('mysql-devel', 'mariadb-devel'),  'rsync']
 
 sanity_check_paths = {
     'files': ['bin/%s' % x for x in binary_files],
