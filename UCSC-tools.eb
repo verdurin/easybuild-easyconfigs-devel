@@ -18,7 +18,7 @@ sources = ['jksrc.v322.zip']
 prebuildopts = ' MACHTYPE=$(echo $MACHTYPE | cut -d"-" -f1) &&'
 prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
 prebuildopts += ' MYSQLINC=$(mysql_config --include | cut -c3-) &&'
-prebuildopts += ' BINDIR=$(pwd)/bin/$MACHTYPE && '
+prebuildopts += ' BINDIR=%(builddir)s/bin/$MACHTYPE && '
 prebuildopts += ' mkdir -p $BINDIR && mkdir -p lib/$MACHTYPE &&'
 prebuildopts += ' cd src && '
 
@@ -190,7 +190,7 @@ binary_files = ["aarToAxt","addAveMedScoreToPsls", "addCols", "affyPairsToSample
                 "wigToBigWig", "wordLine", "xmlCat", "xmlToSql"]
 
 files_to_copy = [
-    (['UCSC-tools/%s' % x for x in binary_files], "bin"),
+    (['%(builddir)s/bin/x86_64/%s' % x for x in binary_files], "bin"),
     "README"
 ]
 
