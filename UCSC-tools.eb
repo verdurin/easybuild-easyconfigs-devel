@@ -15,7 +15,12 @@ toolchain = {'name': 'goolf', 'version': '1.7.20'}
 source_urls = ['http://hgdownload.cse.ucsc.edu/admin/']
 sources = ['jksrc.v322.zip']
 
-buildopts = ' MACHTYPE="x86_64" '
+prebuildopts = ' MACHTYPE=$(echo $MACHTYPE | cut -d"-" -f1) &&'
+prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
+prebuildopts += ' MYSQLINC=$(mysql_config --include) &&'
+prebuildopts += ' BINDIR=$(pwd)/bin/$MACHTYPE && '
+prebuildopts += ' mkdir $BINDIR && mkdir lib/$MACHTYPE '
+
 builddependencies = [('zlib', '1.2.8', '', ''), ('libpng', '1.6.17', '', '')]
 
 osdependencies = ['mysql-devel',  'rsync']
