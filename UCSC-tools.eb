@@ -20,7 +20,9 @@ prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
 prebuildopts += ' MYSQLINC=$(mysql_config --include | cut -c3-) &&'
 prebuildopts += ' BINDIR=$(pwd)/bin/$MACHTYPE && '
 prebuildopts += ' mkdir -p $BINDIR && mkdir -p lib/$MACHTYPE &&'
-prebuildopts += ' cd src && make utils userApps blatSuite '
+prebuildopts += ' cd src && '
+
+buildopts = ' utils userApps blatSuite '
 
 binary_files = ["aarToAxt","addAveMedScoreToPsls", "addCols", "affyPairsToSample",
                 "agpAllToFaFile", "agpCloneCheck", "agpCloneList", "agpToFa",
