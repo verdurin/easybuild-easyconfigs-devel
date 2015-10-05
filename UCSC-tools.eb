@@ -19,7 +19,7 @@ prebuildopts = ' MACHTYPE=$(echo $MACHTYPE | cut -d"-" -f1) &&'
 prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
 prebuildopts += ' MYSQLINC=$(mysql_config --include | cut -c3-) &&'
 prebuildopts += ' BINDIR=%(builddir)s/bin/$MACHTYPE && '
-prebuildopts += ' mkdir -p $BINDIR && mkdir -p lib/$MACHTYPE &&'
+prebuildopts += ' mkdir -p %(builddir)s/bin/$MACHTYPE && mkdir -p lib/$MACHTYPE &&'
 prebuildopts += ' cd src && '
 
 buildopts = ' utils userApps blatSuite '
