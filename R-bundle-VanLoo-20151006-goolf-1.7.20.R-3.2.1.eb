@@ -1,6 +1,6 @@
 easyblock = 'Bundle'
 
-name = 'R-bundle-battenberg'
+name = 'R-bundle-VanLoo'
 version = '20151006'
 rver = '3.2.1'
 versionsuffix = '-R-%s' % rver
