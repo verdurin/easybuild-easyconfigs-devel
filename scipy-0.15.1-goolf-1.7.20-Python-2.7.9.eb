@@ -13,7 +13,7 @@ source_urls = [('http://sourceforge.net/projects/scipy/files/scipy/%(version)s',
 sources = [SOURCE_TAR_GZ]
 
 dependencies = [
-    ('numpy', '1.7.1', versionsuffix),
+    ('numpy', '1.9.2', versionsuffix),
 ]
 
 moduleclass = 'math'
