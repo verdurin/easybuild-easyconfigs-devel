@@ -11,7 +11,7 @@ description = """SymPy is a Python library for symbolic mathematics. It aims to
 
 toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
-source_urls = ['https://sympy.googlecode.com/files']
+source_urls = ['https://github.com/sympy/sympy/archive/']
 sources = [SOURCE_TAR_GZ]
 
 python = "Python"
