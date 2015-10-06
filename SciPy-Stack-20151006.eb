@@ -1,0 +1,17 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+
+dependencies = [
+    ('numpy', '1.9.2'),
+    ('scipy', '0.15.1'),
+    ('matplotlib', '1.4.3'),
+    ('ipython', '3.2.1', 'Python', '2.7.9'),
+    ('pandas','0.16.2'),
+    ('sympy','0.7.6.1'),
+]
+
+osdependencies = [
+    ('python-nose'),
+]
