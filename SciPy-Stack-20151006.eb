@@ -2,6 +2,16 @@
 # Author: Adam Huffman
 # The Francis Crick Institute
 
+easyblock = 'Bundle'
+
+name = 'SciPy-Stack'
+version = '20151006'
+
+homepage = 'http://www.scipy.org/stackspec.html#stackspec'
+description = """A collection of open source software for scientific computing 
+in Python, and particularly a specified set of core packages."""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
 dependencies = [
     ('numpy', '1.9.2'),
