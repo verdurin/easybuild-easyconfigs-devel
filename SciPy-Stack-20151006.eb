@@ -8,8 +8,8 @@ name = 'SciPy-Stack'
 version = '20151006'
 
 homepage = 'http://www.scipy.org/stackspec.html#stackspec'
-description = """A collection of open source software for scientific computing 
-in Python, and particularly a specified set of core packages."""
+description = """ A collection of open source software for scientific computing 
+in Python, and particularly a specified set of core packages. """
 
 toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
@@ -17,9 +17,11 @@ dependencies = [
     ('numpy', '1.9.2'),
     ('scipy', '0.15.1'),
     ('matplotlib', '1.4.3'),
-    ('ipython', '3.2.1', 'Python', '2.7.9'),
+    ('ipython', '3.2.1', '-Python-2.7.9'),
     ('pandas','0.16.2'),
     ('sympy','0.7.6.1'),
 ]
 
 osdependencies = ['python-nose']
+
+moduleclass = 'bio'
