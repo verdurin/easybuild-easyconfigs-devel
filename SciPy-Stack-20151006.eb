@@ -15,11 +15,11 @@ toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
 dependencies = [
     ('numpy', '1.8.1', '-Python-2.7.9'),
-    ('scipy', '0.15.1'),
-    ('matplotlib', '1.4.3'),
-    ('ipython', '3.2.1', '-Python-2.7.9'),
-    ('pandas','0.16.2'),
-    ('sympy','0.7.6.1'),
+    ('scipy', '0.15.1', '-Python-2.7.9'),
+    ('matplotlib', '1.4.3', '-Python-2.7.9'),
+    ('IPython', '3.2.0', '-Python-2.7.9'),
+    ('pandas','0.16.2', '-Python-2.7.9'),
+    ('sympy','0.7.6.1', '-Python-2.7.9'),
 ]
 
 osdependencies = ['python-nose']
