@@ -3,6 +3,8 @@
 # Author: Adam Huffman
 # The Francis Crick Institute
 
+easyblock = 'ConfigureMake'
+
 name = 'alleleCount'
 version = '2.1.1'
 
