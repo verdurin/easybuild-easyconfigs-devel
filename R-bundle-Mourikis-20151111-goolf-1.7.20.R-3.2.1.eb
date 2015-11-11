@@ -29,11 +29,14 @@ ext_options = {
 
 # !! order of packages is important !!
 exts_list = [
+    ('Rcpp', '0.12.0', ext_options),
     'dplyr',
     'tidyr',
     'data.table',
     'stringr',
+    'gsubfn',
     'sqldf',
+    'lpSolve',
     'sampling',
     'caret',
     'e1071',
