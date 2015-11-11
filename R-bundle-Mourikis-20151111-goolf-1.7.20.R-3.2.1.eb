@@ -1,0 +1,50 @@
+easyblock = 'Bundle'
+
+name = 'R-bundle-Mourikis'
+version = '20151111'
+rver = '3.2.1'
+versionsuffix = '-R-%s' % rver
+
+homepage = 'http://www.r-project.org/'
+description = """R is a free software environment for statistical computing and graphics."""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+# these are extensions for R
+exts_defaultclass = 'RPackage'
+exts_filter = ("R -q --no-save", "library(%(ext_name)s)")
+
+dependencies = [
+    ('R', rver),
+]
+
+ext_options = {
+    'source_urls': [
+        'http://cran.r-project.org/src/contrib/Archive/%(name)s',  # package archive
+        'http://cran.r-project.org/src/contrib/',  # current version of packages
+        'http://cran.freestatistics.org/src/contrib',  # mirror alternative for current packages
+    ],
+    'source_tmpl': '%(name)s_%(version)s.tar.gz'
+}
+
+# !! order of packages is important !!
+exts_list = [
+    'dplyr',
+    'tidyr',
+    'data.table',
+    'stringr',
+    'sqldf',
+    'sampling',
+    'caret',
+    'e1071',
+    'pROC',
+]
+
+modextrapaths = {'R_LIBS': ''}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['stringr'],
+}
+
+moduleclass = 'lang'
