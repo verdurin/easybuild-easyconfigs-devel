@@ -14,11 +14,10 @@ between some other projects, specifically AscatNGS and Battenburg. The project c
 2 equivalent implementations of allele counting code in perl and C for BAM processing.
 The C version of alleleCounter additionally supports CRAM input. """
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
-source_urls = ['https://github.com/cancerit/%(name)/archive/']
-sources = ['v%(version).tar.gz']
-
+sources = [SOURCE_TAR_GZ]
+source_urls = ['https://github.com/cancerit/%(name)s/archive/v%(version)s']
 
 dependencies = [
     ('HTSlib', '1.2.1'),
