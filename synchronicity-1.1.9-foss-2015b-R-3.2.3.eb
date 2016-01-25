@@ -4,7 +4,7 @@ name = 'synchronicity'
 version = '1.1.9'
 
 homepage = 'http://cran.r-project.org/web/packages/%(name)s'
-description = """animation: Boost mutex functionality in R"""
+description = """synchronicity: Boost mutex functionality in R"""
 
 toolchain = {'name': 'foss', 'version': '2015b'}
 
