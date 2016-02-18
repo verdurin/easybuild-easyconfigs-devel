@@ -1,0 +1,27 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Author: Adam Huffman
+# adam.huffman@crick.ac.uk
+# The Francis Crick Institute
+##
+
+name = 'BamUtil'
+version = '1.0.13'
+
+homepage = 'http://genome.sph.umich.edu/wiki/BamUtil'
+description = """BamUtil is a repository that contains several programs
+  that perform operations on SAM/BAM files. All of these programs
+  are built into a single executable, bam."""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/statgen/bamUtil/archive']
+
+files_to_copy = ["bam"]
+
+sanity_check_paths = {
+    'files': ["bam"],
+}
+
+moduleclass = 'bio'
