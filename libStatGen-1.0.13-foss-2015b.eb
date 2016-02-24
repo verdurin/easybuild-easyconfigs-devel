@@ -1,0 +1,35 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman adam.huffman@crick.ac.uk
+# The Francis Crick Institute
+
+easyblock = 'MakeCp'
+
+name = 'libStatGen'
+version = '1.0.13'
+
+homepage = 'https://github.com/statgen/libStatGen'
+description = """Classes for statistical genetic programs"""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+source_urls = ['https://github.com/statgen/%(name)s/archive/']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [
+    ('zlib', '1.2.8'),
+    #('OpenSSL', '1.0.1q'),
+]
+
+osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
+
+runtest = 'test'
+
+files_to_copy = ["samtools","vcf","bam","glf","fastq","general","include",
+                 "libStatGen.a"]
+
+sanity_check_paths = {
+    'files': ["libStatGen.a"],
+    'dirs': ["samtools","vcf","bam","glf","fastq","general","include"],
+}
+
+moduleclass = 'bio'
