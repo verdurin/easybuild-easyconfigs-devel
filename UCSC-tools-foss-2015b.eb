@@ -1,0 +1,206 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'MakeCp'
+
+name = 'UCSC-tools'
+version = '3.2.8'
+
+homepage = 'http://hgdownload.cse.ucsc.edu/downloads.html'
+description = """ GenomeBrowser and related utilities """
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+source_urls = ['http://hgdownload.cse.ucsc.edu/admin/']
+sources = ['jksrc.v328.zip']
+
+prebuildopts = ' MACHTYPE=$(echo $MACHTYPE | cut -d"-" -f1) &&'
+prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
+prebuildopts += ' MYSQLINC=$(mysql_config --include | cut -c3-) &&'
+prebuildopts += ' BINDIR=%(builddir)s/bin/$MACHTYPE && '
+prebuildopts += ' mkdir -p %(builddir)s/bin/$MACHTYPE && mkdir -p lib/$MACHTYPE &&'
+prebuildopts += ' cd src && '
+
+buildopts = ' utils userApps blatSuite '
+
+binary_files = ["aarToAxt","addAveMedScoreToPsls", "addCols", "affyPairsToSample",
+                "agpAllToFaFile", "agpCloneCheck", "agpCloneList", "agpToFa",
+                "agpToGl", "agxToBed", "agxToIntronBeds", "agxToTxg", "aladdin",
+                "allenCollectSeq", "altAnalysis", "altPaths", "altSplice",
+                "altSummary", "ameme", "aNotB", "apacheMonitor", "assessLibs",
+                "autoDtd", "autoSql", "autoXml", "ave", "aveCols", "averagExp",
+                "averageZoomLevels", "avgTranscriptomeExps", "axtAndBed", "axtBest",
+                "axtCalcMatrix", "axtChain", "axtDropOverlap", "axtDropSelf",
+                "axtFilter", "axtForEst", "axtIndex", "axtPretty", "axtQueryCount",
+                "axtRecipBest", "axtRescore", "axtSort", "axtSplitByTarget",
+                "axtSwap", "axtToBed", "axtToChain", "axtToMaf", "axtToPsl",
+                "bedClip", "bedCommonRegions", "bedCons", "bedCoverage", "bedDown",
+                "bedExtendRanges", "bedGeneParts", "bedGraphPack", "bedGraphToBigWig",
+                "bedInGraph", "bedIntersect", "bedItemOverlapCount", "bedOrBlocks",
+                "bedPileUps", "bedRemoveOverlap", "bedRestrictToPositions", "bedSort",
+                "bedSplitOnChrom", "bedToBigBed", "bedToExons", "bedToFrames",
+                "bedToGenePred", "bedToPsl", "bedToTxEdges", "bedUp",
+                "bedWeedOverlapping", "bigBedInfo", "bigBedNamedItems",
+                "bigBedSummary", "bigBedToBed", "bigWigAverageOverBed", "bigWigCat",
+                "bigWigCluster", "bigWigCorrelate", "bigWigInfo", "bigWigMerge",
+                "bigWigSummary", "bigWigToBedGraph", "bigWigToWig", "blastToPsl",
+                "blastXmlToPsl", "blat", "blatz", "blatzClient", "blatzServer",
+                "borfBig", "bottleneck", "bptForTwoBit", "bptLookupStringToBits64",
+                "bptMakeStringToBits64", "calc", "calcGap", "catDir", "catUncomment",
+                "ccCp", "chainAntiRepeat", "chainDbToFile", "chainFilter",
+                "chainMergeSort", "chainNet", "chainPreNet", "chainSort",
+                "chainSplit", "chainStats", "chainStitchId", "chainSwap",
+                "chainToAxt", "chainToPsl", "chainToPslBasic", "checkableBorf",
+                "checkAgpAndFa", "checkCardinality", "checkChain",
+                "checkCoverageGaps", "checkHgFindSpec", "checkSgdSync",
+                "checkTableCoords", "checkUrlsInTable", "chopFaLines",
+                "chromGraphFromBin", "chromGraphToBin", "clusterGenes",
+                "clusterPsl", "clusterRna", "colTransform", "consForBed",
+                "convolve", "countChars", "counter", "countNib",
+                "createSageSummary", "crTreeIndexBed", "crTreeSearchBed",
+                "ctgFaToFa", "ctgToChromFa", "dbFindFieldsWith", "dbSnoop",
+                "dbTrash", "detab", "dnadust", "dnaMotifFind", "dumpNib",
+                "edwAddAssembly", "edwAddQaContamTarget", "edwAddQaEnrichTarget",
+                "edwAddSubscriber", "edwChangeFormat", "edwComparePeaks",
+                "edwCorrectFileTags", "edwCreateUser", "edwFakeManifestFromSubmit",
+                "edwJob", "edwMakeContaminationQa", "edwMakeEnrichments",
+                "edwMakePairedEndQa", "edwMakeRepeatQa", "edwMakeReplicateQa",
+                "edwMakeValidFile", "edwQaEvaluate", "edwReallyRemoveFiles",
+                "edwReplicatedPeaks", "edwRetryJob", "edwRsyncEdwUser",
+                "edwRunDaemon", "edwRunOnIds", "edwSamPairedEndStats",
+                "edwSolexaToSangerFastq", "edwSubmit", "eisenInput",
+                "emblMatrixToMotif", "embossToPsl", "endsInLf", "estLibStats",
+                "estOrient", "exonerateGffDoctor", "expToRna", "faAlign",
+                "faCmp", "faCount", "faFilter", "faFilterN", "faFlyBaseToUcsc",
+                "faFrag", "faGapLocs", "faGapSizes", "fakeFinContigs", "fakeOut",
+                "faNcbiToUcsc", "faNoise", "faOneRecord", "faPolyASizes",
+                "faRandomize", "faRc", "faSimplify", "faSize", "faSomeRecords",
+                "faSplit", "fastqToFa", "faToFastq", "faToNib", "faToTab",
+                "faToTwoBit", "faTrans", "faTrimPolyA", "faTrimRead",
+                "featureBits", "fetchChromSizes", "ffaToFa", "findMotif",
+                "findStanAlignments", "fishClones", "fixCr", "fixHarbisonMotifs",
+                "fqToQa", "fqToQac", "fragPart", "gapSplit", "gapToLift",
+                "gbGetEntries", "gbOneAcc", "gbSeqCheck", "gbToFaRa", "gcForBed",
+                "genePredCheck", "genePredFilter", "genePredHisto",
+                "genePredSingleCover", "genePredToBed", "genePredToBigGenePred",
+                "genePredToFakePsl", "genePredToGtf", "genePredToMafFrames",
+                "genePredToPsl", "geoMirrorNode", "getChroms", "getFeatDna",
+                "getRna", "getRnaPred", "gfClient", "gff3ToGenePred",
+                "gff3ToPsl", "gffPeek", "gfPcr", "gfServer", "git-reports",
+                "gmtime", "gpcrParser", "gpStats", "gpToGtf", "groupSamples",
+                "gsBig", "gtfToGenePred", "hapmapPhaseIIISummary", "headRest",
+                "hgAddLiftOverChain", "hgAvidShortBed", "hgBbiDbLink",
+                "hgBioCyc", "hgCeOrfToGene", "hgCGAP", "hgChroms", "hgClonePos",
+                "hgClusterGenes", "hgCountAlign", "hgCtgPos", "hgDeleteChrom",
+                "hgDropSplitTable", "hgEmblProtLinks", "hgExonerate",
+                "hgExpDistance", "hgExperiment", "hgExtFileCheck", "hgFakeAgp",
+                "hgFiberglass", "hgFindSpec", "hgFlyBase", "hgGcPercent",
+                "hgGeneBands", "hgGenericMicroarray", "hgGetAnn",
+                "hgGnfMicroarray", "hgGoAssociation", "hgGoldGapGl", "hgGtex",
+                "hgJaxQtl", "hgKegg", "hgKegg2", "hgKegg3", "hgKgGetText",
+                "hgKgMrna", "hgKnownGeneList", "hgKnownMore", "hgKnownToSuper",
+                "hgLoadBed", "hgLoadBlastTab", "hgLoadChain",
+                "hgLoadChromGraph", "hgLoadEranModules", "hgLoadGap",
+                "hgLoadGenePred", "hgLoadItemAttr", "hgLoadMaf",
+                "hgLoadMafFrames", "hgLoadMafSummary", "hgLoadNet",
+                "hgLoadNetDist", "hgLoadOut", "hgLoadOutJoined", "hgLoadPsl",
+                "hgLoadRnaFold", "hgLoadSample", "hgLoadSeq", "hgLoadSqlTab",
+                "hgLoadWiggle", "hgLsSnpPdbLoad", "hgMapMicroarray",
+                "hgMapToGene", "hgMapViaSwissProt", "hgMedianMicroarray",
+                "hgMrnaRefseq", "hgNearTest", "hgNetDist", "hgNibSeq", "hgPar",
+                "hgPepPred", "hgPhMouse", "hgProtIdToGenePred", "hgRatioMicroarray",
+                "hgRenameSplitTable", "hgRnaGenes", "hgSanger20", "hgSanger22",
+                "hgSelect", "hgSgdGff3", "hgSgdGfp", "hgSgdPep", "hgSoftberryHom",
+                "hgSoftPromoter", "hgSpeciesRna", "hgsql", "hgsqladmin",
+                "hgsqldump", "hgsqlimport", "hgsqlSwapTables", "hgsqlTableDate",
+                "hgStanfordMicroarray", "hgStsAlias", "hgStsMarkers", "hgSuperfam",
+                "hgTablesTest", "hgTomRough", "hgTpf", "hgTraceInfo", "hgTrackDb",
+                "hgTracksRandom", "hgWaba", "hgWiggle", "hgWormLinks",
+                "hgYeastRegCode", "hitreport", "hprdP2p", "htmlCheck", "htmlPics",
+                "hubCheck", "hubPublicCheck", "indexfa", "indexgl", "intronEnds",
+                "iriToControlTable", "iriToDnaMotif", "isPcr", "ixali", "ixIxx",
+                "ixword1", "ixword3", "jkUniq", "joinableFields", "joinerCheck",
+                "knownToHprd", "knownToVisiGene", "knownVsBlat", "kvsSummary",
+                "lavToAxt", "lavToPsl", "ldHgGene", "lfsOverlap", "libScan",
+                "liftAcross", "liftAgp", "liftFrags", "liftOver", "liftOverMerge",
+                "liftPromoHits", "liftUp", "lineCount", "linesToRa", "localtime",
+                "mafAddIRows", "mafAddQRows", "mafCoverage", "mafFetch",
+                "mafFilter", "mafFrag", "mafFrags", "mafGene", "mafMeFirst",
+                "mafOrder", "mafRanges", "mafsInRegion", "mafSpeciesList",
+                "mafSpeciesSubset", "mafSplit", "mafSplitPos", "mafToAxt",
+                "mafToPsl", "mafToSnpBed", "makepgo", "makeTableDescriptions",
+                "makeTableList", "makeTrackIndex", "maskOutFa",
+                "maxTranscriptomeExps", "mdbPrint", "mdbUpdate", "mdToNcbiLift",
+                "metaFlatten", "metaHoist", "metaReformat", "mgcFastaForBed",
+                "mktime", "motifLogo", "motifSig", "mousePoster", "mrnaToGene",
+                "mysqlSecurityCheck", "netChainSubset", "netClass", "netFilter",
+                "netSplit", "netStats", "netSyntenic", "netToAxt", "netToBed",
+                "netToBedWithId", "newProg", "nibbImageProbes", "nibbNameFix",
+                "nibbParseImageDir", "nibbPrepImages", "nibFrag", "nibSize",
+                "normalizeSampleFile", "nt4Frag", "oligoMatch", "orf", "orfStats",
+                "orthoEvaluate", "orthologBySynteny", "orthoMap", "orthoPickIntron",
+                "orthoSplice", "overlapSelect", "paraFetch", "paraSync", "patCount",
+                "pepPredToFa", "phToPsl", "polyInfo", "positionalTblCheck",
+                "primeMate", "promoSeqFromCluster", "protDust", "pslCat",
+                "pslCDnaFilter", "pslCheck", "pslCoverage", "pslDiff",
+                "pslDropOverlap", "pslFilter", "pslFilterPrimers", "pslGlue",
+                "pslHisto", "pslHitPercent", "pslIntronsOnly", "pslLiftSubrangeBlat",
+                "pslMap", "pslMrnaCover", "pslPairs", "pslPartition", "pslPosTarget",
+                "pslPretty", "pslQuickFilter", "pslRecalcMatch", "pslReps",
+                "pslScore", "pslSelect", "pslSimp", "pslSort", "pslSortAcc",
+                "pslSplitOnTarget", "pslStats", "pslSwap", "pslToBed", "pslToChain",
+                "pslToPslx", "pslToXa", "pslUniq", "pslUnpile", "pslxToFa",
+                "qacAgpLift", "qacToQa", "qacToWig", "qaToQac", "randomLines",
+                "raSqlQuery", "raToCds", "raToLines", "raToTab",
+                "refreshNamedSessionCustomTracks", "refSeqGet", "regionPicker",
+                "relPairs", "reviewIndexes", "reviewSanity", "rikenBestInCluster",
+                "rmFaDups", "rnaFoldBig", "rowsToCols", "safePush", "samHit",
+                "sanger22gtf", "scaffoldFaToAgp", "scaleSampleFiles", "scanRa",
+                "scrambleFa", "semiNorm", "seqCheck", "sequenceForBed", "sim4big",
+                "simpleChain", "sizeof", "snpException", "snpMaskAddInsertions",
+                "snpMaskCutDeletions", "snpMaskSingle", "snpNcbiToUcsc", "snpValid",
+                "spacedToTab", "spideyToPsl", "splitFa", "splitFaIntoContigs",
+                "splitFile", "splitFileByColumn", "splitSim", "sqlToXml",
+                "stageMultiz", "stanToBedAndExpRecs", "stringify", "stToXao",
+                "subChar", "subColumn", "subs", "subsetAxt", "subsetTraces",
+                "tableSum", "tagStormHoist", "tagStormReformat", "tailLines",
+                "tdbQuery", "testSearch", "textHist2", "textHistogram",
+                "tfbsConsLoc", "tfbsConsSort", "tickToDate", "timePosTable",
+                "toDev64", "toLower", "toUpper", "trackDbPatch", "trackDbRaFormat",
+                "trackOverlap", "trfBig", "trixSearch", "twinOrf", "twinOrf2",
+                "twinOrf3", "twinOrfStats", "twinOrfStats2", "twinOrfStats3",
+                "twoBitDup", "twoBitInfo", "twoBitMask", "twoBitToFa",
+                "txAbFragFind", "txBedToGraph", "txCdsBadBed", "txCdsCluster",
+                "txCdsEvFromBed", "txCdsEvFromBorf", "txCdsEvFromProtein",
+                "txCdsEvFromRna", "txCdsGoodBed", "txCdsOrfInfo", "txCdsOrtho",
+                "txCdsPick", "txCdsPredict", "txCdsRaExceptions",
+                "txCdsRefBestEvOnly", "txCdsRepick", "txCdsSuspect",
+                "txCdsSvmInput", "txCdsToGene", "txCdsWeed", "txgAddEvidence",
+                "txgAnalyze", "txGeneAccession", "txGeneAlias", "txGeneAltProt",
+                "txGeneCanonical", "txGeneCdsMap", "txGeneColor",
+                "txGeneExplainUpdate1", "txGeneFromBed", "txGeneProtAndRna",
+                "txGeneSeparateNoncoding", "txGeneXref", "txgGoodEdges",
+                "txgToAgx", "txgToXml", "txgTrim", "txInfoAssemble", "txOrtho",
+                "txPslFilter", "txPslToBed", "txReadRa", "txWalk", "udcCleanup",
+                "udcFuse", "undupFa", "uniqSize", "updateStsInfo", "upper",
+                "utrFa", "validateFiles", "validateManifest", "vegaBuildInfo",
+                "venn", "verticalSplitSqlTable", "weedLines", "whyConserved",
+                "wigBedToStep", "wigCorrelate", "wigEncode", "wigTestMaker",
+                "wigToBigWig", "wordLine", "xmlCat", "xmlToSql"]
+
+files_to_copy = [
+    (['%(builddir)s/bin/x86_64/%s' % x for x in binary_files], "bin"),
+    "README"
+]
+
+builddependencies = [('zlib', '1.2.8'), ('libpng', '1.6.17')]
+
+osdependencies = [('mysql-devel', 'mariadb-devel'),  'rsync']
+
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in binary_files],
+    'dirs': []
+}
+
+moduleclass = 'bio'
