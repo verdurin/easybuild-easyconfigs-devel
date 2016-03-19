@@ -1,0 +1,66 @@
+easyblock = 'Bundle'
+
+name = 'R-bundle-dpclust'
+version = '20160319'
+rver = '3.2.3'
+versionsuffix = '-R-%s' % rver
+
+homepage = 'http://www.r-project.org/'
+description = """R is a free software environment for statistical computing and graphics.
+ This is a bundle of packages and dependencies for the Van Loo group."""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+# these are extensions for R
+exts_defaultclass = 'RPackage'
+exts_filter = ("R -q --no-save", "library(%(ext_name)s)")
+
+dependencies = [
+    ('R', rver),
+]
+
+ext_options = {
+    'source_urls': [
+        'http://cran.r-project.org/src/contrib/Archive/%(name)s',  # package archive
+        'http://cran.r-project.org/src/contrib/',  # current version of packages
+        'http://cran.freestatistics.org/src/contrib',  # mirror alternative for current packages
+    ],
+    'source_tmpl': '%(name)s_%(version)s.tar.gz'
+}
+
+# !! order of packages is important !!
+exts_list = [
+    'parallel',
+    ('memoise', '0.2.1', ext_options),
+    ('whisker', '0.3-2', ext_options),
+    ('rstudioapi', '0.3.1', ext_options),
+    ('roxygen2', '4.1.1', ext_options),
+    ('git2r', '0.10.1', ext_options),
+    ('rversions', '1.0.0', ext_options),
+    ('devtools', '1.8.0', ext_options),
+    ('shape', '1.4.2', ext_options),
+    ('diagram', '1.6.3', ext_options),
+    ('quadprog', '1.5-5', ext_options),
+    ('MASS', '7.3-45', ext_options),
+    ('lpSolve', '5.6.13', ext_options),
+    ('limSolve', '1.5.5.1', ext_options),
+    ('LIM', '1.4.6', ext_options),
+    ('doParallel', '1.0.8', ext_options),
+    ('pkgmaker', '0.22', ext_options),
+    ('rngtools', '1.2.4', ext_options),    
+    ('doRNG', '1.6', ext_options),
+    ('lattice', '0.20-33', ext_options),
+    ('igraph', '1.0.1', ext_options),
+    ('KernSmooth', '2.23-15', ext_options),
+    ('permute', '0.9-0', ext_options),
+    ('vegan', '2.3-4', ext_options),
+]
+
+modextrapaths = {'R_LIBS': ''}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['devtools','LIM'],
+}
+
+moduleclass = 'lang'
