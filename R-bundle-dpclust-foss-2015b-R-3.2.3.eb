@@ -17,6 +17,9 @@ exts_filter = ("R -q --no-save", "library(%(ext_name)s)")
 
 dependencies = [
     ('R', rver),
+    ('R-bundle-Bioconductor', '3.2', versionsuffix),
+    ('dpclust3p', '1.0.1', versionsuffix),
+    ('DPClust', '2.1.0', versionsuffix),
 ]
 
 ext_options = {
@@ -54,6 +57,7 @@ exts_list = [
     ('KernSmooth', '2.23-15', ext_options),
     ('permute', '0.9-0', ext_options),
     ('vegan', '2.3-4', ext_options),
+    ('dpclust3p', 
 ]
 
 modextrapaths = {'R_LIBS': ''}
