@@ -1,0 +1,26 @@
+easyblock = 'RPackage'
+
+name = 'dpclust3p'
+version = '1.0.1'
+
+homepage = 'http://github.com/sdentro'
+description = """Part of the Crick Cancer Genomics pipeline."""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+source_urls = ['https://github.com/sdentro/dpclust3p/archive/']
+sources = ['%(name)s-%(version)s.tar.gz']
+
+rver = '3.2.3'
+versionsuffix = '-R-%s' % rver
+dependencies = [
+    ('R', rver),
+    ('R-bundle-Bioconductor', '3.2', versionsuffix),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': [name],
+}
+
+moduleclass = 'bio'
