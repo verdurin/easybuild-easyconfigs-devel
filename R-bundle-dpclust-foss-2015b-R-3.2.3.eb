@@ -57,7 +57,6 @@ exts_list = [
     ('KernSmooth', '2.23-15', ext_options),
     ('permute', '0.9-0', ext_options),
     ('vegan', '2.3-4', ext_options),
-    ('dpclust3p', 
 ]
 
 modextrapaths = {'R_LIBS': ''}
