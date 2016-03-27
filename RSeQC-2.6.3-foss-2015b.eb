@@ -16,20 +16,22 @@ toolchain = {'name': 'foss', 'version': '2015b'}
 sources = [SOURCE_TAR_GZ]
 source_urls = [SOURCEFORGE_SOURCE]
 
-patches = []
-
 python = 'Python'
 pyver = '2.7.10'
 versionsuffix = '-%s-%s' % (python, pyver)
 
 dependencies = [
     ('R', '3.2.3'),
-    ('numpy', '1.9.2', versionsuffix),
+    ('numpy', '1.10.1', versionsuffix),
 ]
+
+runtest = "python setup.py test"
 
 sanity_check_paths = {
     'files': [],
-    'dirs': ["."]
+    'dirs': ["bin", "lib"]
 }
+
+sanity_check_commands = [('python', '-c "import qcmodule"')]
 
 moduleclass = 'bio'
