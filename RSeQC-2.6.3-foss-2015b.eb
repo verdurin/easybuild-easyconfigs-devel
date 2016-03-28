@@ -1,3 +1,7 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
 easyblock = 'PythonPackage'
 
 name = 'RSeQC'
@@ -32,6 +36,6 @@ sanity_check_paths = {
     'dirs': ["bin", "lib"]
 }
 
-sanity_check_commands = [('python', '-c "import qcmodule"')]
+options = {'modulename': 'qcmodule'}
 
 moduleclass = 'bio'
