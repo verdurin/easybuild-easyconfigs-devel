@@ -1,5 +1,6 @@
-# Note:
-# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
 easyblock = 'MakeCp'
 
 name = 'Subread'
