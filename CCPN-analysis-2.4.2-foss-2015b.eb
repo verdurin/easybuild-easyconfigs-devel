@@ -1,0 +1,31 @@
+easyblock = 'ConfigureMake'
+
+name = 'CCPN-analysis'
+version = '2.4.2'
+
+homepage = 'http://www.ccpn.ac.uk'
+description = """Nuclear Magnetic Resonance (NMR) computing collaborative 
+ project. This is the main analysis package. """
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+sources = ['analysis%(version)s.tar.gz']
+source_urls = ['http://www2.ccpn.ac.uk/download/ccpnmr']
+
+patches = []
+
+dependencies = [
+    ('Python', '2.7.10'),
+    ('numpy', '1.9.2'),
+    ('Tcl', '8.6.3'),
+    ('Tk', '8.6.3'),
+    # Tix?
+    ('Mesa', '11.1.2'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'base'
