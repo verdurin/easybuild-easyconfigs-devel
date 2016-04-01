@@ -10,23 +10,22 @@ homepage = 'https://github.com/smithlabcode/preseq'
 description = """Software for predicting library complexity and genome coverage in 
  high-throughput sequencing."""
 
-# toolchain name should be 'TEMPLATE' if this is a template, so EasyBuild knows and is willing to use it as a template
 toolchain = {'name': 'foss', 'version': '2015b'}
 toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
 
 # For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
-sources = ['v%(version)s.tar.gz']
-source_urls = ['https://github.com/smithlabcode/preseq/archive']
+sources = ['%(name)s_v%(version)s.tar.bz2']
+source_urls = ['https://github.com/smithlabcode/%(name)s/releases/download/v%(version)s']
 
 patches = []
 
-dependencies = []
+dependencies = [('GSL', '2.1')]
 
-# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+files_to_copy = ['bin']
+
 sanity_check_paths = {
     'files': [],
     'dirs': ["."]
 }
 
-# You SHOULD change the following line; Kindly consult other easyconfigs for possible options
 moduleclass = 'bio'
