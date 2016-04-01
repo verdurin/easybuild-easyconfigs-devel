@@ -1,6 +1,6 @@
-# Note:
-# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
-# It was auto-generated based on a template easyconfig, so it should be used with care.
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
 easyblock = 'MakeCp'
 
 name = 'preseq'
@@ -11,9 +11,7 @@ description = """Software for predicting library complexity and genome coverage 
  high-throughput sequencing."""
 
 toolchain = {'name': 'foss', 'version': '2015b'}
-toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
 
-# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
 sources = ['%(name)s_v%(version)s.tar.bz2']
 source_urls = ['https://github.com/smithlabcode/%(name)s/releases/download/v%(version)s']
 
@@ -21,10 +19,10 @@ patches = []
 
 dependencies = [('GSL', '2.1')]
 
-files_to_copy = ['bin']
+files_to_copy = ['bam2mr', 'preseq', 'docs', 'preseqR']
 
 sanity_check_paths = {
-    'files': [],
+    'files': ['bam2mr', 'preseq'],
     'dirs': ["."]
 }
 
