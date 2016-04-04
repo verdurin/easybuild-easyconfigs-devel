@@ -1,16 +1,20 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
 easyblock = 'RPackage'
 
 name = 'ASCAT'
 version = '2.4.1'
 
-homepage = 'http://github.com/Crick-CancerGenomics'
+homepage = 'http://github.com/Crick-CancerGenomics/ascat'
 description = """ASCAT - R package to infer tumour purity, ploidy and 
  allele-specific copy number profiles. """
 
 toolchain = {'name': 'foss', 'version': '2015b'}
 
-source_urls = ['https://github.com/Crick-CancerGenomics/ascat/archive/']
-sources = ['v%(namelower)s-%(version)s.tar.gz']
+source_urls = ['https://github.com/Crick-CancerGenomics/%(namelower)s/releases/download/v%(version)s']
+sources = ['%(name)s_%(version)s.tar.gz']
 
 rver = '3.2.3'
 versionsuffix = '-R-%s' % rver
