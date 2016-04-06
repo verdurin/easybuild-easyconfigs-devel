@@ -1,6 +1,6 @@
 # This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
-# # Author: Adam Huffman
-# # The Francis Crick Institute
+# Author: Adam Huffman
+# The Francis Crick Institute
 easyblock = 'CMakeMake'
 
 name = 'bam-readcount'
@@ -10,28 +10,26 @@ homepage = 'https://github.com/genome/bam-readcount'
 description = """Count DNA sequence reads in BAM files"""
 
 toolchain = {'name': 'foss', 'version': '2015b'}
-toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
 
-# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
 sources = ['v%(version)s.tar.gz']
 source_urls = ['https://github.com/genome/%(name)s/archive']
 
-patches = []
+patches = ['%(name)s-%(version)s-cmake_install_prefix.patch']
 
 builddependencies = [
     ('SAMtools', '1.3'),
     ('CMake', '3.4.1'),
 ]
 
-prebuildopts = "export SAMTOOLS_ROOT=${EBROOTSAMTOOLS}/include/bam && "
-prebuildopts += "export CMAKE_INSTALL_PREFIX=%(installdir)s && make deps &&"
+configopts = " -DCMAKE_INSTALL_PREFIX=%(installdir)s "
+
+prebuildopts = "export SAMTOOLS_ROOT=${EBROOTSAMTOOLS}/include/bam && make deps &&"
 
 separate_build_dir = True
 
-# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
 sanity_check_paths = {
-    'files': ["bam-readcount"],
-    'dirs': ["."]
+    'files': ["bin/bam-readcount"],
+    'dirs': []
 }
 
 moduleclass = 'bio'
