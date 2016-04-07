@@ -24,8 +24,12 @@ dependencies = [
 
 sanity_check_paths = {
     'files': ['bin/cnvkit.py', 'bin/reference2targets.py', 'bin/vcf_sample_filter.py',
-              'lib/python%(pyshortver)/site-packages/CNVkit-%(version)s-py%(pyshortver)s.egg'],
+              'lib/python%(pyshortver)s/site-packages/CNVkit-%(version)s-py%(pyshortver)s.egg'],
     'dirs': []
 }
+
+options = {'modulename': 'CNVkit'}
+
+sanity_check_commands = [ 'cd test; make' ]
 
 moduleclass = 'bio'
