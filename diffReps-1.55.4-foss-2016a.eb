@@ -1,0 +1,29 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+easyblock = 'PerlModule'
+
+name = 'diffReps'
+version = '1.55.4'
+
+homepage = 'https://github.com/shenlab-sinai/diffreps'
+description = """Differential analysis for ChIP-seq with biological replicates"""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
+
+# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['https://github.com/shenlab-sinai/%(namelower)s/blob/master/Downloads']
+
+patches = []
+
+dependencies = ['Perl', '5.22.1']
+
+# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
