@@ -5,25 +5,29 @@ easyblock = 'PerlModule'
 
 name = 'diffReps'
 version = '1.55.4'
+versionsuffix = '-Perl-%(perlver)s'
 
 homepage = 'https://github.com/shenlab-sinai/diffreps'
 description = """Differential analysis for ChIP-seq with biological replicates"""
 
 toolchain = {'name': 'foss', 'version': '2016a'}
-toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
+toolchainopts = {}  
 
-# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
 sources = ['%(name)s-%(version)s.tar.gz']
-source_urls = ['https://github.com/shenlab-sinai/%(namelower)s/blob/master/Downloads']
+source_urls = ['https://github.com/shenlab-sinai/%(namelower)s/raw/master/Downloads']
 
 patches = []
 
-dependencies = ['Perl', '5.22.1']
+dependencies = [
+    ('Perl', '5.22.1'),
+    ('%(name)s-bundle', '%(version)s', versionsuffix),
+]
 
-# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
 sanity_check_paths = {
-    'files': [],
+    'files': ['bin/diffReps.pl', 'bin/sam2bed.pl'],
     'dirs': ["."]
 }
+
+options = {'modulename': 'diffReps::DiffRes'}
 
 moduleclass = 'bio'

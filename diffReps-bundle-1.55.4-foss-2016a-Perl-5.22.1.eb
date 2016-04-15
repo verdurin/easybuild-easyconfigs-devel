@@ -1,0 +1,58 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+easyblock = 'Bundle'
+
+name = 'diffReps-bundle'
+version = '1.55.4'
+versionsuffix = '-Perl-%(perlver)s'
+
+homepage = 'https://github.com/shenlab-sinai/diffreps'
+description = """Differential analysis for ChIP-seq with biological replicates"""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {}  
+
+
+patches = []
+
+dependencies = [('Perl', '5.22.1')]
+
+# Perl module dependencies for this module
+exts_defaultclass = 'PerlModule'
+exts_filter = ("perldoc -lm %(ext_name)s ", "")
+
+exts_list = [
+    ('Statistics::TTest', '1.1.0', {
+         'source_tmpl': 'Statistics-TTest-1.1.0.tar.gz',
+         'source_urls': ['http://search.cpan.org/CPAN/authors/id/Y/YU/YUNFANG/'],
+    }),
+    ('Math::CDF', '0.1', {
+         'source_tmpl': 'Math-CDF-0.1.tar.gz',
+         'source_urls': ['http://search.cpan.org/CPAN/authors/id/C/CA/CALLAHAN/'],
+    }),
+    ('Parallel::ForkManager', '1.18', {
+         'source_tmpl': 'Parallel-ForkManager-1.18.tar.gz',
+         'source_urls': ['http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/'],
+    }),
+    ('Statistics::Distributions', '1.02', {
+         'source_tmpl': 'Statistics-Distributions-1.02.tar.gz',
+         'source_urls': ['http://search.cpan.org/CPAN/authors/id/M/MI/MIKEK/'],
+    }),
+    #('Time-HiRes', '1.9732', {
+    #     'source_tmpl': 'Time-HiRes-1.9732.tar.gz',
+    #     'source_urls': ['http://search.cpan.org/CPAN/authors/id/J/JH/JHI/'],
+    #}),
+]
+
+modextrapaths = {
+    'PATH': "", # add installation dir to PATH
+    'PERL5LIB': 'lib/perl5/site_perl/%(perlver)s/'
+}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
