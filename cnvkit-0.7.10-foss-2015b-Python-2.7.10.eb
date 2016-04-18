@@ -27,7 +27,7 @@ sanity_check_paths = {
     'dirs': []
 }
 
-options = {'modulename': 'CNVkit'}
+options = {'modulename': 'cnvlib'}
 
 sanity_check_commands = [ 'cd test; make' ]
 
