@@ -16,9 +16,10 @@ sources = ['v%(version)s.tar.gz']
 source_urls = ['https://github.com/etal/cnvkit/archive']
 
 dependencies = [
-                ('Python', '2.7.10'),
-                ('Biopython', '1.66', versionsuffix),
-                ('%(name)s-bundle', '%(version)s', versionsuffix),
+    ('Python', '2.7.10'),
+    ('Biopython', '1.66', versionsuffix),
+    ('%(name)s-bundle', '%(version)s', versionsuffix),
+    ('R-bundle-%(name)s', '0.1', '-R-3.2.3'),
 ]
 
 sanity_check_paths = {
