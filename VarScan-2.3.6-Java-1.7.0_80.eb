@@ -1,0 +1,29 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'JAR'
+
+name = 'VarScan'
+version = '2.3.6'
+
+homepage = 'http://varscan.sourceforge.net/'
+description = """Variant calling and somatic mutation/CNV detection for next-generation sequencing data"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+sources = ['%s.v%s.jari/download' % (name, version)]
+source_urls = ['https://sourceforge.net/projects/varscan/files/']
+
+java = 'Java'
+javaver = '1.7.0_80'
+versionsuffix = '-%s-%s' % (java, javaver)
+
+dependencies = [(java, javaver)]
+
+sanity_check_paths = {
+    'files': sources,
+    'dirs': [],
+}
+
+moduleclass = 'bio'
