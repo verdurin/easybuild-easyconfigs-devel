@@ -1,0 +1,33 @@
+# Note:
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# It was auto-generated based on a template easyconfig, so it should be used with care.
+easyblock = 'ConfigureMake'
+
+name = 'bcl2fastq2'
+version = '2.17.1.14'
+
+homepage = 'http://support.illumina.com/downloads/bcl2fastq-conversion-software-v217.html'
+description = """Combines per-cycle BCL base call files from Illumina sequencers into per-read 
+ FASTQ files for a run, as required by many downstream analysis applications. Intended for use
+ with MiSeq, HiSeq 4000, 3000, 2500, and 2000, NextSeq, and HiSeq X Systems"""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
+
+# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
+sources = ['%(name)s-v%(version)s.tar.zip']
+source_urls = ['ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/software/bcl2fastq/bcl2fastq2-v2.17.1.14.tar.zip']
+
+patches = []
+
+dependencies = [
+    ('zlib', '1.2.8'),  
+]
+
+# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
