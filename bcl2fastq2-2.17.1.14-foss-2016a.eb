@@ -1,6 +1,6 @@
-# Note:
-# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
-# It was auto-generated based on a template easyconfig, so it should be used with care.
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Modified by Adam Huffman
+# The Francis Crick Institute
 easyblock = 'ConfigureMake'
 
 name = 'bcl2fastq2'
@@ -14,17 +14,33 @@ description = """Combines per-cycle BCL base call files from Illumina sequencers
 toolchain = {'name': 'foss', 'version': '2016a'}
 toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
 
-# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
 sources = ['%(name)s-v%(version)s.tar.zip']
-source_urls = ['ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/software/bcl2fastq/bcl2fastq2-v2.17.1.14.tar.zip']
+source_urls = ['ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/software/bcl2fastq/']
+
+# Warning: it is recommended to build BCL2FASTQ outside of the source directory:
+#     mkdir ../bcl2fastq-build
+#         cd ../bcl2fastq-build
+#             ../src/configure --prefix=/path/to/install/dir
+#                 make
+#                     make install
+
+
+preconfigopts = "tar zxvf %(name)s-v%(version)s.tar.gz && mkdir bcl2fastq-build && cd bcl2fastq-build && " 
+
+configure_cmd_prefix = "../bcl2fastq/src/./"
+
+prebuildopts = " cd bcl2fastq-build && "
 
 patches = []
 
-dependencies = [
-    ('zlib', '1.2.8'),  
+builddependencies = [
+    ('zlib', '1.2.8'),
+    ('CMake', '3.4.3'),
+    ('Boost', '1.60.0'),
 ]
 
-# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+dependencies = [('zlib', '1.2.8')]
+
 sanity_check_paths = {
     'files': [],
     'dirs': ["."]
