@@ -1,0 +1,32 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Modified by Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'PackedBinary'
+
+name = 'SnpEff'
+version = '4.2'
+versionsuffix = '-Java-%(javaver)s'
+
+homepage = 'http://snpeff.sourceforge.net/'
+description = """Genetic variant annotation and effect prediction toolbox. It annotates and 
+ predicts the effects of variants on genes (such as amino acid changes)."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+sources = ['snpEff_v%(version_major)s_%(version_minor)s_core.zip']
+source_urls = ['http://sourceforge.net/projects/snpeff/files']
+
+dependencies = [('Java', '1.7.0_80')]
+
+sanity_check_paths = {
+    'files': ['snpEff.jar', 'SnpSift.jar'],
+    'dirs': ['examples', 'galaxy', 'scripts']
+}
+
+modloadmsg = """
+To execute: java -jar \\$EBROOTSNPEFF/snpEff.jar
+and: java -jar \\$EBROOTSNPEFF/SnpSift.jar
+"""
+
+moduleclass = 'bio'
