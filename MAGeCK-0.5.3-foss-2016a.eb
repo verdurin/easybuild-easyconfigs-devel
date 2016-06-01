@@ -1,0 +1,31 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Modified by Adam Huffman
+# The Francis Crick Institute
+easyblock = 'ConfigureMake'
+
+name = 'MAGeCK'
+version = '0.5.3'
+
+homepage = 'https://sourceforge.net/p/mageck/wiki'
+description = """Model-based Analysis of Genome-wide CRISPR-Cas9 Knockout (MAGeCK) is a
+ computational tool to identify important genes from the recent genome-scale CRISPR-Cas9
+ knockout screens technology."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
+
+# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
+sources = ['%(namelower)s-%(version)s.zip/download']
+source_urls = ['http://sourceforge.net/projects/%(namelower)s/files/0.5/%(namelower)-%(version)s.zip/download']
+
+patches = []
+
+dependencies = []
+
+# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
