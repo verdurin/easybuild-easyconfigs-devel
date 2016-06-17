@@ -5,7 +5,7 @@ easyblock = 'PythonPackage'
 
 name = 'cnvkit'
 version = '0.7.3'
-versionsuffix = '-Python-%(pyver)s'
+versionsuffix = '-Python-2.7.10'
 
 homepage = 'http://cnvkit.readthedocs.org/'
 description = """Copy number variant detection from targeted DNA sequencing"""
@@ -17,9 +17,9 @@ source_urls = ['https://github.com/etal/cnvkit/archive']
 
 dependencies = [
     ('Python', '2.7.10'),
-    ('Biopython', '1.66', versionsuffix),
-    ('%(name)s-bundle', '%(version)s', versionsuffix),
-    ('R-bundle-%(name)s', '0.1', '-R-3.2.3'),
+    ('Biopython', '1.66', '-Python-2.7.10'),
+    ('cnvkit-bundle', '0.7.3', '-Python-2.7.10'),
+    ('R-bundle-cnvkit', '0.1', '-R-3.2.3'),
 ]
 
 sanity_check_paths = {

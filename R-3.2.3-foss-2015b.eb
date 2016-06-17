@@ -13,8 +13,7 @@ preconfigopts = 'BLAS_LIBS="$LIBBLAS" LAPACK_LIBS="$LIBLAPACK"'
 configopts = "--with-lapack --with-blas --with-pic --enable-threads --with-x=no --enable-R-shlib"
 # some recommended packages may fail in a parallel build (e.g. Matrix), and we're installing them anyway below
 configopts += " --with-recommended-packages=no"
-# Ensure PNG capability is provided
-configopts += " --with-tcltk --with-cairo --with-libpng --with-jpeglib --with-libtiff "
+configopts += " --with-tcltk --with-tcl-config=$EBROOTTCL/lib/tclConfig.sh --with-tk-config=$EBROOTTK/lib/tkConfig.sh"
 
 dependencies = [
     ('libreadline', '6.3'),
@@ -28,7 +27,6 @@ dependencies = [
     ('libxml2', '2.9.2'),  # for XML
     ('GDAL', '2.0.1'),  # for rgdal
     ('PROJ', '4.8.0'), # for rgdal
-    ('cairo', '1.14.2'),
 ]
 
 name_tmpl = '%(name)s_%(version)s.tar.gz'

@@ -5,7 +5,7 @@ easyblock = 'Bundle'
 
 name = 'cnvkit-bundle'
 version = '0.7.3'
-versionsuffix = '-Python-%(pyver)s'
+versionsuffix = '-Python-2.7.10'
 
 homepage = 'http://cnvkit.readthedocs.org/en/latest/index.html'
 description = """CNVkit is a Python library and command-line software toolkit to infer and
@@ -21,6 +21,7 @@ exts_defaultclass = 'PythonPackage'
 
 dependencies = [
     ('Python', '2.7.10'),
+    ('libjpeg-turbo', '1.4.1'),
 ]
 
 exts_list = [

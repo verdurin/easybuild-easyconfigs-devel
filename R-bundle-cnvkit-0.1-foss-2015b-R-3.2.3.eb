@@ -1,0 +1,59 @@
+easyblock = 'Bundle'
+
+name = 'R-bundle-cnvkit'
+version = '0.1'
+rver = '3.2.3'
+versionsuffix = '-R-3.2.3'
+
+homepage = 'http://www.r-project.org/'
+description = """R is a free software environment for statistical computing and graphics."""
+
+toolchain = {'name': 'foss', 'version': '2015b'}
+
+# these are extensions for R
+exts_defaultclass = 'RPackage'
+exts_filter = ("R -q --no-save", "library(%(ext_name)s)")
+
+dependencies = [
+    ('R', '3.2.3'),
+    ('R-bundle-Bioconductor', '3.2', versionsuffix),
+]
+
+name_tmpl = '%(name)s_%(version)s.tar.gz'
+ext_options = {
+    'source_urls': [
+        'http://cran.r-project.org/src/contrib/Archive/%(name)s',  # package archive
+        'http://cran.r-project.org/src/contrib/',  # current version of packages
+        'http://cran.freestatistics.org/src/contrib',  # mirror alternative for current packages
+    ],
+    'source_tmpl': name_tmpl,
+}
+
+bioconductor_options = {
+    'source_urls': [
+        'http://www.bioconductor.org/packages/3.2/bioc/src/contrib/',
+        'http://www.bioconductor.org/packages/3.2/data/annotation/src/contrib/',
+        'http://www.bioconductor.org/packages/3.2/data/experiment/src/contrib/',
+    ],
+    'source_tmpl': name_tmpl,
+}
+
+# !! order of packages is important !!
+exts_list = [
+    ('R.cache', '0.12.0', ext_options),
+    ('DNAcopy', '1.44.0', bioconductor_options),
+    ('listenv', '0.6.0', ext_options),
+    ('globals', '0.6.1', ext_options),
+    ('future', '0.13.0', ext_options),
+    ('PSCBS', '0.61.0', ext_options),
+    ('cghFLasso', '0.2-1', ext_options),
+]
+
+modextrapaths = {'R_LIBS': ''}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['cghFLasso','DNAcopy', 'future', 'globals', 'listenv', 'PSCBS', 'R.cache'],
+}
+
+moduleclass = 'lang'
