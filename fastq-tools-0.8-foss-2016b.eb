@@ -1,0 +1,35 @@
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+easyblock = 'ConfigureMake'
+
+name = 'fastq-tools'
+version = '0.8'
+
+homepage = 'http://homes.cs.washington.edu/~dcjones/fastq-tools/'
+description = """ A collection of small and efficient programs for performing some common and 
+ uncommon tasks with FASTQ files. """
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://homes.cs.washington.edu/~dcjones/fastq-tools/']
+
+dependencies = [
+    ('PCRE', '8.38'),
+    ('zlib', '1.2.8'),
+    ('Automake', '1.15'),
+]
+
+builddependencies = [('libtool', '2.4.6')]
+
+preconfigopts = "rm -f libtool install-sh missing depcomp config.guess config.sub && "
+preconfigopts += "cp $EBROOTAUTOMAKE/share/automake*/* . || cp $EBROOTLIBTOOL/bin/libtool . && "
+
+configopts = ' LIBS="-lm -lpthread "'
+parallel = 1
+
+sanity_check_paths = {
+    'files': ['bin/fastq-grep', 'bin/fastq-uniq'],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
