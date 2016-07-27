@@ -1,0 +1,32 @@
+easyblock = 'ConfigureMake'
+
+name = 'homer'
+version = '4.8'
+
+homepage = 'http://homer.salk.edu/homer/'
+description = """HOMER (Hypergeometric Optimization of Motif EnRichment) is a suite of tools for 
+ Motif Discovery and ChIP-Seq analysis. It is a collection of command line programs for 
+ unix-style operating systems written in mostly perl and c++. Homer was primarily written as a 
+ de novo motif discovery algorithm that is well suited for finding 8-12 bp motifs in 
+ large scale genomics data."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {}  
+
+sources = ['configureHomer.pl']
+source_urls = ['http://homer.salk.edu/homer']
+
+patches = []
+
+dependencies = [
+    ('BLAT', '3.5.0'),
+    ('Ghostscript', '9.16'),
+    ('samtools', '1.3.1'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
