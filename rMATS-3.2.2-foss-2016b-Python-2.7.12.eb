@@ -1,0 +1,40 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Modified by Adam Huffman
+# The Francis Crick Institute
+# There is a built-in test script but it requires a large data download 
+easyblock = 'Tarball'
+
+name = 'rMATS'
+version = '3.2.2.beta'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://rnaseq-mats.sourceforge.net/'
+description = """MATS is a computational tool to detect differential alternative splicing events
+ from RNA-Seq data. The statistical model of MATS calculates the P-value and false discovery rate
+ that the difference in the isoform ratio of a gene between two conditions exceeds a given
+ user-defined threshold. From the RNA-Seq data, MATS can automatically detect and analyze alternative
+ splicing events corresponding to all major types of alternative splicing patterns. MATS handles
+ replicate RNA-Seq data from both paired and unpaired study design."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s.%(version)s.tgz']
+source_urls = [('https://sourceforge.net/projects/rnaseq-mats/files/MATS/', 'download')]
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('SAMtools', '1.2'),
+    ('STAR', '2.5.2a'),    
+]
+
+sanity_check_paths = {
+    'files': ['bin/joinFiles.py', 'bin/MATS.processsUnique.sam.py', 'bin/processGTF.SAMs.py',
+              'bin/trimFastq.py', 'RNASeq-MATS.py', 'testRun.sh'],
+    'dirs': ['data', 'gtf', 'MATS', 'testData']
+}
+
+modloadmsg = """ 
+To execute rMATS: python \\$EBROOTRMATS/RNASeq-MATS.py 
+"""
+
+moduleclass = 'bio'
