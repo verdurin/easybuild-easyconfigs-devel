@@ -36,7 +36,7 @@ configopts = ' LIBS="-lm -lpthread "'
 parallel = 1
 
 sanity_check_paths = {
-    'files': ['fastq-grep', 'fastq-uniq'],
+    'files': ['bin/fastq-grep', 'bin/fastq-uniq'],
     'dirs': ["."]
 }
 
