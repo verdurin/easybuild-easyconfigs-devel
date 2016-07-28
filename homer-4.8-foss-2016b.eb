@@ -13,7 +13,7 @@ description = """HOMER (Hypergeometric Optimization of Motif EnRichment) is a su
 toolchain = {'name': 'foss', 'version': '2016b'}
 toolchainopts = {}  
 
-sources = ['configureHomer.pl']
+sources = ['configureHomer.pl', ('configureHomer.pl', 'echo %s')]
 source_urls = ['http://homer.salk.edu/homer']
 
 dependencies = [
