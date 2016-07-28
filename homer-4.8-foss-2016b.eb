@@ -19,7 +19,7 @@ source_urls = ['http://homer.salk.edu/homer']
 dependencies = [
     ('BLAT', '3.5'),
     #('Ghostscript', '9.16'),
-    ('samtools', '1.3.1'),
+    ('SAMtools', '1.3.1'),
 ]
 
 osdependencies = [
