@@ -6,21 +6,18 @@ easyblock = 'ConfigureMake'
 name = 'strelka'
 version = '1.0.15'
 
-homepage = ''
+homepage = 'https://sites.google.com/site/strelkasomaticvariantcaller/home'
 description = """Strelka is an analysis package designed to detect somatic SNVs and small indels from 
  the aligned sequencing reads of matched tumor-normal samples."""
 
 toolchain = {'name': 'foss', 'version': '2016b'}
-toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
 
 # For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
 sources = ['%(name)s_workflow-%(version)s.tar.gz']
-#source_urls = ['https://sites.google.com/site/strelkasomaticvariantcaller/home/download/']
-source_urls = ['ftp://strelka:%27%27@ftp.illumina.com/v1-branch/v1.0.15/']
+source_urls = [('https://sites.google.com/site/strelkasomaticvariantcaller/home/download/', '?attredirects=0&d=1')]
+#source_urls = ['ftp://strelka:%27%27@ftp.illumina.com/v1-branch/v1.0.15/']
 
 #https://sites.google.com/site/strelkasomaticvariantcaller/home/download/strelka_workflow-1.0.15.tar.gz?attredirects=0&d=1
-
-patches = []
 
 dependencies = []
 
