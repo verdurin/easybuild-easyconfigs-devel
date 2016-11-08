@@ -1,0 +1,51 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez, Wiktor Jurkowski
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+# Babraham Institute, UK
+# Modified by:
+# Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'MakeCp'
+
+name = "BEDOPS"
+version = "2.4.20"
+
+homepage = 'https://github.com/bedops/bedops'
+description = """ BEDOPS is an open-source command-line toolkit that performs highly 
+ efficient and scalable Boolean and other set operations, statistical calculations, 
+ archiving, conversion and other management of genomic data of arbitrary scale."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'static': True}
+
+source_urls = ['https://github.com/bedops/bedops/archive/']
+sources = ['v%(version)s.tar.gz']
+
+prebuildopts = 'unset LIBS && '
+
+buildopts = ' & make install'
+
+files_to_copy = [
+    (["applications/bed/bedextract/bin/bedextract", "applications/bed/bedmap/bin/bedmap",
+    "applications/bed/bedops/bin/bedops", "applications/bed/closestfeats/bin/closest-features",
+    "applications/bed/conversion/bin/convert2bed", "applications/bed/sort-bed/bin/sort-bed",
+    "applications/bed/starch/bin/*"], "bin"), 
+    (["bin/*"], "bin"),
+]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in ["bam2bed", "bam2bed_gnuParallel", "bam2bed_sge",
+                                     "bam2starch", "bam2starch_gnuParallel", "bam2starch_sge",
+                                     "bedextract", "bedmap", "bedops", "closest-features", 
+                                     "convert2bed", "gff2bed", "gff2starch", "gtf2bed", "gtf2starch",
+                                     "gvf2bed", "gvf2starch", "psl2bed", "psl2starch",
+                                     "rmsk2bed", "rmsk2starch", "sam2bed", "sam2starch",
+                                     "sort-bed", "starch", "starchcat", "starchcluster_gnuParallel",
+                                     "starchcluster_sge", "unstarch", "vcf2bed", "vcf2starch", 
+                                     "wig2bed", "wig2starch"]],
+    'dirs': []
+}
+
+moduleclass = 'bio'
