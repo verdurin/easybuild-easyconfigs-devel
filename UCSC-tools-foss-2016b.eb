@@ -191,11 +191,14 @@ binary_files = ["aarToAxt","addAveMedScoreToPsls", "addCols", "affyPairsToSample
                 "wigToBigWig", "wordLine", "xmlCat", "xmlToSql"]
 
 files_to_copy = [
-    (['%(builddir)s/bin/x86_64/%s' % x for x in binary_files], "bin"),
+    (['%(builddir)s/bin/x86_64/%s'.format(x) for x in binary_files], "bin"),
     "README"
 ]
 
-builddependencies = [('zlib', '1.2.8'), ('libpng', '1.6.17')]
+builddependencies = [
+    ('zlib', '1.2.8'), 
+    ('libpng', '1.6.26')
+]
 
 osdependencies = [('mysql-devel', 'mariadb-devel'),  'rsync']
 
