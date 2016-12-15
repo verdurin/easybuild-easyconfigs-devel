@@ -1,0 +1,31 @@
+# v1.2.11
+# Adam Huffman
+# The Francis Crick Institute
+
+
+easyblock = 'MakeCp'
+
+name = 'FLASH'
+version = '1.2.11'
+
+homepage = 'https://sourceforge.net/projects/flashpage/'
+description = """FLASH, Fast Length Adjustment of SHort reads, is a very accurate fast
+ tool to merge paired-end reads from fragments that are shorter than twice the length
+ of reads. The extended length of reads has a significant positive impact on
+ improvement of genome assemblies."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['https://sourceforge.net/projects/flashpage/files/']
+
+files_to_copy = ['%(namelower)s']
+
+sanity_check_paths = {
+    'files': ['%(namelower)s'],
+    'dirs': ["."]
+}
+
+modextrapaths = {'PATH': ['']}
+
+moduleclass = 'bio'
