@@ -1,0 +1,41 @@
+# Note:
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# It was auto-generated based on a template easyconfig, so it should be used with care.
+easyblock = 'ConfigureMake'
+
+name = 'CompuCell3D'
+version = '3.7.5'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://www.compucell3d.org'
+description = """CompuCell3D is an open-source simulation environment for multi-cell,
+ single-cell-based modeling of tissues, organs and organisms.
+
+ It uses [the] Cellular Potts Model to model cell behavior. """
+
+toolchain = {'name': 'intel', 'version': '2016b'}
+toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
+
+# For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://www.example.com']
+
+patches = []
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('Qt', '4.8.7'),
+    ('PyQT', '4.11.4'), # Update to 2016b required
+    ('SWIG', '3.0.10', '-Python-%(pyver)s'),
+    ('VTK', '7.0.0', '-Python-%(pyver)s'),
+    ('Qwt', '6.1.3'),
+    ('QScintilla', ''), # No easyconfig
+    ('CMake', '3.6.2'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
