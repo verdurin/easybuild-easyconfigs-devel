@@ -1,0 +1,35 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Author: Adam Huffman
+# adam.huffman@crick.ac.uk
+# The Francis Crick Institute
+
+easyblock = "PythonPackage"
+
+name = 'sympy'
+version = '1.0'
+versionsuffix = '-Python-$(pyver)s'
+
+homepage = 'http://sympy.org/'
+description = """SymPy is a Python library for symbolic mathematics. It aims to
+ become a full-featured computer algebra system (CAS) while keeping the code as
+ simple as possible in order to be comprehensible and easily extensible. SymPy
+ is written entirely in Python and does not require any external libraries."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = ['https://github.com/sympy/%(name)s/releases/download/%(name)s-%(version)s/']
+sources = ['%(name)s-%(version)s.tar.gz']
+
+dependencies = [
+    ('Python', '2.7.12'),
+]
+
+runtest = 'python setup.py test'
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/sympy'],
+}
+
+moduleclass = 'math'
