@@ -1,0 +1,26 @@
+easyblock = 'PythonPackage'
+
+name = 'emcee'
+version = '2.2.1'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://dan.iel.fm/emcee/current/'
+description = """emcee is a stable, well tested Python implementation of the affine-invariant ensemble
+ sampler for Markov chain Monte Carlo (MCMC) proposed by Goodman & Weare (2010). The code is open source
+ and has already been used in several published projects in the Astrophysics literature."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = [PYPI_LOWER_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+dependencies = [
+    ('Python', '2.7.12'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/'],
+}
+
+moduleclass = 'devel'
