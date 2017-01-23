@@ -1,0 +1,40 @@
+easyblock = 'PythonPackage'
+
+name = 'PyYAML'
+version = '3.12'
+versionsuffix = '-Python-%(pyver)s-tkinter'
+
+homepage = 'http://pyyaml.org/wiki/%(name)s'
+description = """YAML is a data serialization format designed for human readability and
+ interaction with scripting languages.
+
+ PyYAML is a YAML parser and emitter for the Python programming language.
+
+ PyYAML features
+
+    a complete  YAML 1.1 parser. In particular, PyYAML can parse all examples from the specification.
+    The parsing algorithm is simple enough to be a reference for YAML parser implementors.
+    Unicode support including UTF-8/UTF-16 input/output and \u escape sequences.
+    low-level event-based parser and emitter API (like SAX).
+    high-level API for serializing and deserializing native Python objects (like DOM or pickle).
+    support for all types from the  YAML types repository. A simple extension API is provided.
+    both pure-Python and fast LibYAML-based parsers and emitters.
+    relatively sensible error messages."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://pyyaml.org/download/%(namelower)s/']
+
+dependencies = [
+    ('Python', '2.7.12', '-tkinter'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/yaml']
+}
+
+options = {'modulename': 'yaml'}
+
+moduleclass = 'lang'

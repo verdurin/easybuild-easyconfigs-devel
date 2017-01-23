@@ -1,0 +1,30 @@
+# TODO: use native unit tests
+
+easyblock = 'PythonPackage'
+
+name = 'seaborn'
+version = '0.7.1'
+versionsuffix = '-Python-%(pyver)s-tkinter'
+
+homepage = "http://seaborn.pydata.org/index.html"
+description = """Seaborn is a Python visualization library based on matplotlib. It provides
+ a high-level interface for drawing attractive statistical graphics."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('Python', '2.7.12', '-tkinter'),
+    ('matplotlib', '1.5.3', versionsuffix),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."],
+}
+
+options = {'modulename': 'seaborn as sns'}
+
+moduleclass = 'vis'
