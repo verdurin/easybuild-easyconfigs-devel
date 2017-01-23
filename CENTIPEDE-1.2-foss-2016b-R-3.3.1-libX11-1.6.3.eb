@@ -1,0 +1,31 @@
+# Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'RPackage'
+
+name = 'CENTIPEDE'
+version = '1.2'
+versionsuffix = '-R-%(rver)s-libX11-1.6.3'
+
+homepage = 'http://centipede.uchicago.edu/'
+description = """CENTIPEDE applies a hierarchical Bayesian mixture model to infer regions of the genome that are
+ bound by particular transcription factors. It starts by identifying a set of candidate binding sites (e.g., sites
+ that match a certain position weight matrix (PWM)), and then aims to classify the sites according to whether each
+ site is bound or not bound by a TF. CENTIPEDE is an unsupervised learning algorithm that discriminates between
+ two different types of motif instances using as much relevant information as possible."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s_%(version)s.tar.gz']
+source_urls = ['http://download.r-forge.r-project.org/src/contrib/']
+
+dependencies = [
+    ('R', '3.3.1', '-libX11-1.6.3'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['%(name)s']
+}
+
+moduleclass  = 'bio'
