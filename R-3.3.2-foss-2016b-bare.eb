@@ -1,0 +1,67 @@
+name = 'R'
+version = '3.3.2'
+versionsuffix = '-bare'
+
+homepage = 'http://www.r-project.org/'
+description = """R is a free software environment for statistical computing and graphics."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = ['http://cran.us.r-project.org/src/base/R-%(version_major)s']
+
+preconfigopts = 'BLAS_LIBS="$LIBBLAS" LAPACK_LIBS="$LIBLAPACK"'
+configopts = "--with-lapack --with-blas --with-pic --enable-threads --with-x=yes --enable-R-shlib"
+# some recommended packages may fail in a parallel build (e.g. Matrix), and we're installing them anyway below
+configopts += " --with-recommended-packages=no"
+
+dependencies = [
+    ('libreadline', '6.3'),
+    ('ncurses', '6.0'),
+    ('XZ', '5.2.2'),
+    ('bzip2', '1.0.6'),
+    ('zlib', '1.2.8'),
+    ('libpng', '1.6.26'),  # for plotting in R
+    ('PCRE', '8.38'),
+    ('libjpeg-turbo', '1.4.2'),  # for plottting in R
+    ('Java', '1.8.0_112', '', True),  # Java bindings are built if Java is found, might as well provide it
+    ('Tcl', '8.6.5'),  # for tcltk
+    ('Tk', '8.6.5'),  # for tcltk
+    ('cURL', '7.49.1'),  # for RCurl
+    ('libxml2', '2.9.4'),  # for XML
+    ('GDAL', '2.1.0'),  # for rgdal
+    ('PROJ', '4.9.2'), # for rgdal
+    ('GMP', '6.1.1'),  # for igraph
+    ('X11', '20160819'),
+    ('libX11', '1.6.3'),
+]
+
+name_tmpl = '%(name)s_%(version)s.tar.gz'
+ext_options = {
+    'source_urls': [
+        'http://cran.r-project.org/src/contrib/Archive/%(name)s',  # package archive
+        'http://cran.r-project.org/src/contrib/',  # current version of packages
+        'http://cran.freestatistics.org/src/contrib',  # mirror alternative for current packages
+    ],
+    'source_tmpl': name_tmpl,
+}
+
+
+# !! order of packages is important !!
+# packages updated on January 21st 2016
+exts_list = [
+    # default libraries, only here to sanity check their presence
+    'base',
+    'datasets',
+    'graphics',
+    'grDevices',
+    'grid',
+    'methods',
+    'splines',
+    'stats',
+    'stats4',
+    'tools',
+    'utils',
+]
+
+moduleclass = 'lang'
