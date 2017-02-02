@@ -1,0 +1,28 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Author: Adam Huffman
+# adam.huffman@crick.ac.uk
+# The Francis Crick Institute
+
+easyblock = 'PythonPackage'
+
+name = 'brewer2mpl'
+version = '1.4.1'
+versionsuffix = '-Python-%(pyver)s-tkinter'
+
+homepage = 'https://jiffyclub.github.io/palettable/'
+description = "Connect colorbrewer2.org color maps to Python and matplotlib"
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [('Python', '2.7.12', '-tkinter')]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/'],
+}
+
+moduleclass = 'lang'
