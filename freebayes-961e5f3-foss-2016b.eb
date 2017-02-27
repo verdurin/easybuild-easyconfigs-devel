@@ -1,0 +1,37 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Author: Adam Huffman
+# adam.huffman@crick.ac.uk
+# The Francis Crick Institute
+
+easyblock = 'MakeCp'
+
+name = 'freebayes'
+version = '961e5f3'
+
+homepage = 'https://github.com/ekg/freebayes'
+description = """Bayesian haplotype-based polymorphism discovery and genotyping. """
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+# Source obtained via:
+# git clone --recursive git://github.com/ekg/freebayes.git
+# then create a tarball using the latest short commit hash
+sources = ['%(name)s-git-%(version)s.tar.gz']
+#source_urls = ['http://www.example.com']
+
+# Disable the phone home script in the default Makefile
+patches = ['%(name)s-no-phoning-home.patch']
+
+dependencies = [('CMake', '3.6.2')]
+ 
+parallel = 1
+
+files_to_copy = ['bin', 'examples', 'paper', 'python', 'scripts']
+
+sanity_check_paths = {
+    'files': ['bin/%(name)s', 'bin/bamleftalign'],
+    'dirs': ['examples', 'paper', 'python', 'scripts']
+}
+
+moduleclass = 'bio'

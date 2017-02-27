@@ -1,0 +1,8 @@
+--- freebayes/Makefile	2017-02-27 21:50:16.000000000 +0000
++++ freebayes.new/Makefile	2017-02-27 22:02:35.316204000 +0000
+@@ -1,4 +1,4 @@
+-all: vcflib/Makefile log
++all: vcflib/Makefile 
+ 	cd src && $(MAKE)
+ 
+ log: src/version_git.h
