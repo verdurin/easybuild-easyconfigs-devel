@@ -7,6 +7,7 @@
 easyblock = 'MakeCp'
 
 name = 'freebayes'
+# 'official' version number reported is v1.1.0-3-g961e5f3-dirty
 version = '961e5f3'
 
 homepage = 'https://github.com/ekg/freebayes'
@@ -23,7 +24,10 @@ sources = ['%(name)s-git-%(version)s.tar.gz']
 # Disable the phone home script in the default Makefile
 patches = ['%(name)s-no-phoning-home.patch']
 
-dependencies = [('CMake', '3.6.2')]
+dependencies = [
+    ('CMake', '3.6.2'),
+    ('zlib', '1.2.8'),
+]
  
 parallel = 1
 
