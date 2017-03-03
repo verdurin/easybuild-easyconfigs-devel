@@ -1,0 +1,34 @@
+easyblock = 'ConfigureMake'
+
+name = 'libXmu'
+version = '1.1.2'
+
+homepage = "http://www.freedesktop.org/wiki/Software/xlibs"
+description = """libXmu provides a set of miscellaneous utility convenience functions for X libraries to use.
+ libXmuu is a lighter-weight version that does not depend on libXt or libXext"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'optarch': True}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = [XORG_LIB_SOURCE]
+
+builddependencies = [
+    ('libXext', '1.3.3'),
+    ('xextproto', '7.3.0'),
+    ('libXt', '1.1.5'),
+    ('xproto', '7.0.28'),
+    ('kbproto', '1.0.7'),
+    ('libpthread-stubs', '0.3'),
+]
+
+dependencies = [
+    ('libXt', '1.1.5'),
+    ('libXpm', '3.5.11'),
+]
+sanity_check_paths = {
+    'files': ['lib/%s' % x for x in ['%(name)s.a', '%%(name)s.%s' % SHLIB_EXT]],
+    'dirs': [],
+}
+
+moduleclass = 'vis'
