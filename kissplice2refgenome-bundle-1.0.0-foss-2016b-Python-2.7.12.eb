@@ -1,0 +1,42 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+easyblock = 'Bundle'
+
+name = 'kissplice2refgenome-bundle'
+version = '1.0.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://kissplice.prabi.fr/tools/%(name)s/'
+description = """A bundle of dependencies for kissplice2refgenome."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+
+dependencies = [
+    ('Python', '2.7.12'),
+]
+
+exts_list = [
+    ('intervaltree', '2.1.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/i/intervaltree'],
+    }),
+    ('intervaltree_bio', '1.0.1', {
+	'source_tmpl': '%(name)s-%(version)s.zip',
+        'source_urls': ['https://pypi.python.org/packages/source/i/intervaltree_bio'],
+    }),
+]
+
+# specify that Bundle easyblock should run a full sanity check, rather than just trying to load the module
+full_sanity_check = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+moduleclass = 'bio'

@@ -1,4 +1,4 @@
-easyblock = 'CMakeMake'
+easyblock = 'PythonPackage'
 
 name = 'kissplice2refgenome'
 version = '1.0.0'
@@ -26,11 +26,11 @@ dependencies = [
     ('kissplice2refgenome-bundle', '1.0.0', versionsuffix),
 ]
 
-runtest = 'test'
-
 sanity_check_paths = {
     'files': [],
     'dirs': ["."]
 }
+
+options = {'modulename': 'kissplice2refgenomelib'}
 
 moduleclass = 'bio'
