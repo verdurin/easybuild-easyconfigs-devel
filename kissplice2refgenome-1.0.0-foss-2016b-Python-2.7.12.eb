@@ -5,7 +5,7 @@ version = '1.0.0'
 versionsuffix = '-Python-%(pyver)s'
 
 homepage = 'http://kissplice.prabi.fr/tools/kiss2refgenome/'
- description = """KisSplice can also be used when a reference (annotated) genome is available,
+description = """KisSplice can also be used when a reference (annotated) genome is available,
  in order to annotate the variants found and help prioritize cases to validate experimentally. 
  In this case, the results of KisSplice are mapped to the reference genome, using gmap or STAR,
  and the mapping results are analysed using KisSplice2RefGenome. Ultimately, for each variant,
@@ -16,18 +16,14 @@ homepage = 'http://kissplice.prabi.fr/tools/kiss2refgenome/'
 toolchain = {'name': 'foss', 'version': '2016b'}
 
 sources = ['%(name)s-%(version)s.tar.gz']
-source_urls = ['ftp://pbil.univ-lyon1.fr/pub/logiciel/%(name)s/download/']
+source_urls = ['ftp://pbil.univ-lyon1.fr/pub/logiciel/kissplice/tools']
 
-
-# also requires intervaltree and intervaltreenio
-# https://pypi.python.org/pypi/intervaltree
-# https://pypi.python.org/pypi/intervaltree_bio
 dependencies = [
     ('CMake', '3.6.2'),
     ('Python', '2.7.12'),
-    ('BioPython', '1.68'),
-    ('kissplice', '2.4.0p1', versionsuffix),
-    ('kissplice2refgenome-bundle', '1.0', versionsuffix),
+    ('Biopython', '1.68', versionsuffix),
+    ('kissplice', '2.4.0-p1', versionsuffix),
+    ('kissplice2refgenome-bundle', '1.0.0', versionsuffix),
 ]
 
 runtest = 'test'
