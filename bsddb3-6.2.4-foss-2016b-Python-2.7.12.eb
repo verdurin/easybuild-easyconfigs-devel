@@ -1,6 +1,7 @@
 # This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
 # Author: Adam Huffman
 # The Francis Crick Institute
+easyblock = 'PythonPackage'
 
 name = 'bsddb3'
 version = '6.2.4'
@@ -24,7 +25,8 @@ dependencies = [
     ('DB', '5.3.28'),
 ]
 
-buildopts = " --berkeley-db=${EBROOTDB} "
+prebuildopts = " echo $EBROOTDB && export BERKELEYDB_DIR=$EBROOTDB && "
+buildopts = " --berkeley-db $EBROOTDB --debug "
 
 sanity_check_paths = {
     'files': ['lib/python%(pyshortver)s/site-packages/%(name)s-%(version)s-py%(pyshortver)s.egg'],
