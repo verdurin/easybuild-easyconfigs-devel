@@ -1,0 +1,30 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'Conda'
+
+name = 'GimmeMotifs'
+version = '0.10.0'
+
+homepage = 'http://gimmemotifs.readthedocs.io/en/latest/'
+description = """GimmeMotifs is a de novo motif prediction pipeline, especially suited for
+ ChIP-seq datasets. It incorporates several existing motif prediction algorithms in an
+ ensemble method to predict motifs and clusters these motifs using the WIC similarity
+ scoring metric."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+requirements = "%(namelower)s=%(version)s matplotlib=1.4.3 mock nose"
+channels = ['bioconda', 'r']
+
+builddependencies = [('Anaconda2', '4.2.0')]
+
+sanity_check_paths = {
+    'files': ['bin/gimme', 'bin/guess-ploidy.py', 'bin/intron_exon_reads.py'],
+    'dirs': ['bin', 'conda-meta', 'data']
+}
+
+sanity_check_commands = ['gimme motifs -h']
+
+moduleclass = 'bio'
