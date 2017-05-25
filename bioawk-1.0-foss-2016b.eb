@@ -1,0 +1,29 @@
+easyblock = 'MakeCp'
+
+name = 'bioawk'
+version = '1.0'
+
+homepage = 'https://github.com/lh3/bioawk'
+description = """Bioawk is an extension to Brian Kernighan's awk, adding the support of
+ several common biological data formats, including optionally gzip'ed BED, GFF, SAM, VCF,
+ FASTA/Q and TAB-delimited formats with column names. It also adds a few built-in functions
+ and an command line option to use TAB as the input/output delimiter. When the new functionality
+ is not used, bioawk is intended to behave exactly the same as the original BWK awk."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/lh3/bioawk/archive/']
+
+files_to_copy = [(['%(name)s'], 'bin'), 'README.awk', 'README.md', 'FIXES',(['awk.1'], 'man')]
+
+sanity_check_paths = {
+    'files': ['bin/%(name)s'],
+    'dirs': ["."]
+}
+
+parallel = 1
+
+modextrapaths = {'PATH': ['']}
+
+moduleclass = 'bio'
