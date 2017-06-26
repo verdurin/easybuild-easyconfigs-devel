@@ -1,0 +1,41 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+easyblock = 'Bundle'
+
+name = 'fusioncatcher-bundle'
+version = '0.9'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://www.crick.ac.uk'
+description = """Python modules required by fusioncatcher."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+
+dependencies = [
+    ('Python', '2.7.12'),
+]
+
+exts_list = [
+    ('openpyxl', '1.5.6', {
+        'source_urls': ['https://pypi.python.org/packages/source/o/openpyxl'],
+    }),
+    ('xlrd', '1.0.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/x/xlrd'],
+    }),
+]
+
+# specify that Bundle easyblock should run a full sanity check, rather than just trying to load the module
+full_sanity_check = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+moduleclass = 'bio'
