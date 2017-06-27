@@ -1,0 +1,43 @@
+easyblock = 'PackedBinary'
+
+name = 'fusioncatcher'
+version = '0.99.7b'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/ndaniel/fusioncatcher'
+description = """FusionCatcher searchers for somatic novel/known fusion genes, translocations
+ and/or chimeras in RNA-seq data (stranded/unstranded paired-end/single-end reads FASTQ files
+ produced by Illumina next-generation sequencing platforms like Illumina Solexa/HiSeq/NextSeq/MiSeq/MiniSeq)
+ from diseased samples."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s_v%(version)s.zip']
+source_urls = ['http://sourceforge.net/projects/fusioncatcher/files/']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('Biopython', '1.68', versionsuffix),
+    ('Bowtie', '1.2.0'),
+    ('seqtk', '1.0-r82b'),
+    ('STAR', '2.5.2b'),
+    ('Bowtie2', '2.2.9'),
+    ('BLAT', '3.5'),
+    ('Kent_tools', '20161115-linux.x86_64', '', True), 
+    ('sratoolkit', '2.8.2-1', '', True),
+    ('Coreutils', '8.27'), # Coreutils-8.27-GCCcore-5.4.0.eb
+    ('Java', '1.8.0_112', '', True),
+    ('fusioncatcher-bundle', '0.9', versionsuffix),
+    ('BWA', '0.7.15'),
+    ('SAMtools', '0.1.19'),
+    ('picard', '2.2.4-Java-1.8.0_112', '', True),
+    ('Velvet', '1.2.10', '-mt-kmer_37'), 
+    ('pigz', '2.3.3'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
