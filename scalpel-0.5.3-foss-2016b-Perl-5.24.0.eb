@@ -1,0 +1,42 @@
+easyblock = 'MakeCp'
+
+name = 'scalpel'
+version = '0.5.3'
+versionsuffix = '-Perl-%(perlver)s'
+
+homepage = 'http://scalpel.sourceforge.net/index.html'
+description = """Scalpel is a software package for detecting INDELs (INsertions and DELetions)
+ mutations in a reference genome which has been sequenced with next-generation sequencing technology
+ (e.g., Illumina). Scalpel is designed to perform localized micro-assembly of specific regions of
+ interest with the goal of detecting mutations with high accuracy and increased power. It is based
+ on the de Bruijn graph assembly paradigm and implements an on-the-fly repeat composition analysis
+ coupled with a self-tuning k-mer strategy to increase specificity in regions characterized by
+ complex repeat structures. It supports three different modes of operation:
+
+ Single: in single mode scalpel detects INDELs in one single dataset (e.g., one individual exome).
+ Denovo: in denovo mode scalpel detects de novo INDELs in one family of four individuals (mom, dad, aff, sib).
+ Somatic: in somatic mode scalpel detects somatic INDELs for a tumor/sample pair.
+
+ For all the modes of operation, scalpel requires that the raw reads have been previously aligned with
+ BWA using default parameters."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = [SOURCEFORGE_SOURCE]
+
+dependencies = [
+    ('CMake', '3.6.2'),
+    ('Perl', '5.24.0'),
+]
+
+executables = ['scalpel-discovery', 'scalpel-export', 'FindDenovos.pl', 'FindSomatic.pl', 'FindVariants.pl']
+
+files_to_copy = [(executables, 'bin/'), 'Usage*','MLDBM*', 'SequenceIO.pm']
+
+sanity_check_paths = {
+    'files': ['bin/scalpel-discovery', 'bin/FindVariants.pl'],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
