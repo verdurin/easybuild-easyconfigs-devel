@@ -1,0 +1,40 @@
+# This is an EasyBuild reciPY, as per https://github.com/easybuilders/easybuild
+easyblock = 'Tarball'
+
+name = 'rMATS-DVR'
+version = '1.0.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://www.example.com'
+description = """rMATS-DVR is a convenient and user-friendly program to streamline the
+ discovery of DVRs (Differential Variants in RNA) between two RNA-seq sample groups with
+ replicates. rMATS-DVR combines a stringent GATK-based pipeline for calling SNVs including
+ SNPs and RNA editing events in RNA-seq reads, with our rigorous rMATS statistical model
+ for identifying differential isoform ratios using RNA-seq sequence count data with replicates."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(version)s.tar.gz']
+source_urls = ['https://github.com/Xinglab/rMATS-DVR/archive/']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('Java', '1.8.0_131', '', True),
+    ('picard', '2.6.0', '-Java-%(javaver)s', True),
+    ('GATK', '3.6-0-g89b7209', '-Java-%(javaver)s', True),
+    ('SAMtools', '1.3.1'),
+]
+
+executables = ['bam_calibration.py', 'FDR.py', 'MATS_LRT.py', 'rMATS-DVR.py', 'rMATS_unpaired.py',
+               'snv_annotation.py', 'vcf_to_mats_input.py'
+]
+
+postinstallcmds = ['mkdir %(installdir)s/bin && mv %(installdir)s/*.py %(installdir)s/bin \
+                   && chmod 755 %(installdir)s/bin/*']
+
+sanity_check_paths = {
+    'files': ['bin/%(name)s.py', 'bin/FDR.py', 'User Manual.pdf'],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
