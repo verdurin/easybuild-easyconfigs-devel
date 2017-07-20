@@ -1,0 +1,27 @@
+easyblock = 'PackedBinary'
+
+name = 'Fiji'
+version = '1.51'
+
+homepage = 'https://fiji.sc/'
+description = """Fiji is an image processing package—a 'batteries-included' distribution of
+ ImageJ, bundling a lot of plugins which facilitate scientific image analysis."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+source_urls = ['https://downloads.imagej.net/fiji/latest/']
+sources = ['fiji-linux64.zip']
+
+dependencies = [('Java', '1.8.0_131')]
+
+osdependencies = ['unzip']
+
+modloadmsg = """To execute %(name)s run: ImageJ-linux64\n Use --system when executing to work around
+ a bug in current Linux kernels\n"""
+
+sanity_check_paths = {
+    'files': ['ImageJ-linux64'],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
