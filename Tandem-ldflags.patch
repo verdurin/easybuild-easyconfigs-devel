@@ -1,0 +1,13 @@
+--- tandem-linux-17-02-01-4/src/Makefile	2017-03-11 17:17:48.000000000 +0000
++++ tandem-linux-17-02-01-4.new/src/Makefile	2017-07-26 16:04:47.623387000 +0100
+@@ -15,8 +15,9 @@
+ #CXXFLAGS = -O2 -DGCC4_3 -DPLUGGABLE_SCORING -DX_P3
+ 
+ #LDFLAGS = -lpthread -L/usr/lib -lm /usr/lib64/libexpat.a -static-libstdc++
+-LDFLAGS = -lpthread -L/usr/lib -lm /usr/lib64/libexpat.a
++#LDFLAGS = -lpthread -L/usr/lib -lm /usr/lib64/libexpat.a
+ #LDFLAGS = -lpthread -L/usr/lib -lm -lexpat
++LDFLAGS = -lpthread -lm -lexpat
+ SRCS := $(wildcard *.cpp)
+ OBJS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
+ DEPS := $(patsubst %.o,%.d,$(OBJS))

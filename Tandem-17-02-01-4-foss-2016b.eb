@@ -1,0 +1,30 @@
+easyblock = 'MakeCp'
+
+name = 'Tandem'
+version = '17-02-01-4'
+
+homepage = 'http://www.thegpm.org/TANDEM'
+description = """X! Tandem open source is software that can match tandem mass spectra with peptide sequences,
+ in a process that has come to be known as protein identification."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(namelower)s-linux-%(version)s.zip']
+source_urls = ['ftp://ftp.thegpm.org/projects/tandem/source/']
+
+patches = ['%(name)s-ldflags.patch']
+
+dependencies = [('expat', '2.2.0')]
+
+start_dir = 'src'
+
+files_to_copy = ['bin/%(namelower)s.exe', 'INSTALL', 'LICENSE', 'README', 'fasta']
+
+postinstallcmds = ['mkdir %(installdir)s/bin && mv %(installdir)s/%(namelower)s.exe %(installdir)s/bin']
+
+sanity_check_paths = {
+    'files': ['bin/%(namelower)s.exe', 'LICENSE', 'README'],
+    'dirs': ['fasta']
+}
+
+moduleclass = 'bio'
