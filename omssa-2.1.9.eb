@@ -1,0 +1,27 @@
+easyblock = 'BinariesTarball'
+
+name = 'omssa'
+version = '2.1.9'
+
+# Not the official homepage, but a user contributed help page
+homepage = 'http://proteomicsresource.washington.edu/protocols06/omssa.php'
+description = """Open Mass Spectrometry Search Algorithm"""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+sources = ['%(name)s-linux.tar.gz']
+source_urls = ['ftp://ftp.ncbi.nih.gov/pub/lewisg/omssa/CURRENT/']
+checksums = ['c82300776a22df9b3c1676e576f97be764c7eaed03b3df90d7a511f2987f6453']
+
+# Probably should be an easyblock, but this works for now
+postinstallcmds = [
+    "cp -a %(builddir)s/%(name)s-%(version)s.linux/contrib %(installdir)s",
+    "mv %(installdir)s/bin/{disclaimer.txt,mods.xml,MSHHWGYGK.dta,OMSSA.xsd,usermods.xml} %(installdir)s"
+]
+
+sanity_check_paths = {
+    'files': ['bin/omssacl', 'bin/omssamerge'],
+    'dirs': ["contrib"]
+}
+
+moduleclass = 'bio'
