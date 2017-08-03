@@ -1,0 +1,50 @@
+easyblock = 'Bundle'
+
+name = 'Perl-bundle-BABS'
+version = '0.4'
+versionsuffix = '-Perl-%(perlver)s'
+
+homepage = 'http://www.crick.ac.uk'
+description = """Bundle of Perl modules for BABS. Currently includes: Set::IntervalTree, IO::Zlib, 
+ File::MMagic and Bio::Grep"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+# this is a bundle of Perl modules
+exts_defaultclass = 'PerlModule'
+exts_filter = ("perldoc -lm %(ext_name)s ", "")
+
+dependencies = [
+    ('Perl', '5.24.0'),
+]
+
+exts_list = [
+    ('Set::IntervalTree', '0.10-OD', {
+        'source_tmpl': 'Set-IntervalTree-0.10-OD.tar.gz',
+	# this is hosted as a local fork at
+        # /camp/stp/babs/working/software/sources/cld-master/depends/Set-IntervalTree-0.10-OD
+    }),
+    ('IO::Zlib', '1.10', {
+        'source_tmpl': 'IO-Zlib-1.10.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/T/TO/TOMHUGHES/'],
+    }),
+    ('File::MMagic', '1.30', {
+        'source_tmpl': 'File-MMagic-1.30.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/K/KN/KNOK'],
+    }),
+    ('Bio::Grep', '0.10.6', {
+        'source_tmpl': 'Bio-Grep-v0.10.6.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/L/LI/LIMAONE/'],
+    }),
+]
+
+modextrapaths = {
+    'PERL5LIB': 'lib/perl5/site_perl/%(perlver)s/'
+}
+
+sanity_check_paths = {
+    'files': ['lib/perl5/site_perl/%(perlver)s/x86_64-linux-thread-multi/Set/IntervalTree.pm'],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'
