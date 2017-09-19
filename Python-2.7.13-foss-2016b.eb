@@ -18,9 +18,8 @@ dependencies = [
     ('libreadline', '6.3'),
     ('ncurses', '6.0'),
     ('SQLite', '3.13.0'),
-    # Disabled in favour of standalone Tkinter module
-    #('Tk', '8.6.5'),
-    ('GMP', '6.1.2'),
+    ('Tk', '8.6.5', '-libX11-1.6.3'),  # this requires a full X11 stack
+    ('GMP', '6.1.1'),
     ('libffi', '3.2.1'),
     # OS dependency should be preferred if the os version is more recent then this version,
     # it's nice to have an up to date openssl for security reasons
@@ -30,20 +29,8 @@ dependencies = [
 osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
 
 # order is important!
-# package versions updated 9th February 2017
-exts_list = [   
-    ('six', '1.10.0', {
-        'source_urls': ['https://pypi.python.org/packages/source/s/six/'],
-    }),
-    #('packaging', '16.8', {
-    #    'source_urls': ['https://pypi.python.org/packages/source/p/packaging/'],
-    #}),
-    #('pyparsing', '2.1.10', {
-    #    'source_urls': ['https://pypi.python.org/packages/source/p/pyparsing/'],
-    #}),
-    #('appdirs', '1.4.0', {
-    #    'source_urls': ['https://pypi.python.org/packages/source/a/appdirs/'],
-    #}),
+# package versions updated 2017-01-08
+exts_list = [
     ('setuptools', '32.3.1', {
         'source_tmpl': '%(name)s-%(version)s.zip',
         'source_urls': ['https://pypi.python.org/packages/source/s/setuptools/'],
@@ -79,7 +66,10 @@ exts_list = [
     ('Cython', '0.25.2', {
         'source_urls': ['https://pypi.python.org/packages/source/c/cython/'],
     }),
-    ('dateutil', '2.5.3', {
+    ('six', '1.10.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/six/'],
+    }),
+    ('dateutil', '2.6.0', {
         'source_tmpl': 'python-%(name)s-%(version)s.tar.gz',
         'source_urls': ['https://pypi.python.org/packages/source/p/python-dateutil/'],
     }),
@@ -87,7 +77,7 @@ exts_list = [
         'source_tmpl': '%(name)s-%(version)s.post2.tar.gz',
         'source_urls': ['https://pypi.python.org/packages/source/d/deap/'],
     }),
-    ('decorator', '4.0.11', {
+    ('decorator', '4.0.10', {
         'source_urls': ['https://pypi.python.org/packages/source/d/decorator/'],
     }),
     ('arff', '2.1.0', {
@@ -101,19 +91,19 @@ exts_list = [
     ('ecdsa', '0.13', {
         'source_urls': ['https://pypi.python.org/packages/source/e/ecdsa/'],
     }),
-    ('cryptography', '1.7.2', {
+    ('cryptography', '1.7.1', {
         'source_urls': ['https://pypi.python.org/packages/source/c/cryptography/'],
-    }),
-    ('pyasn1', '0.2.2', {
-        'source_urls': ['https://pypi.python.org/packages/source/p/pyasn1/'],
     }),
     ('paramiko', '2.1.1', {
         'source_urls': ['https://pypi.python.org/packages/source/p/paramiko/'],
     }),
+    ('pyparsing', '2.1.10', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pyparsing/'],
+    }),
     ('netifaces', '0.10.5', {
         'source_urls': ['https://pypi.python.org/packages/source/n/netifaces'],
     }),
-    ('netaddr', '0.7.19', {
+    ('netaddr', '0.7.18', {
         'source_urls': ['https://pypi.python.org/packages/source/n/netaddr'],
     }),
     ('funcsigs', '1.0.2', {

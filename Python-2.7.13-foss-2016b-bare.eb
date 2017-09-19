@@ -32,6 +32,8 @@ osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
 
 # order is important!
 # package versions updated 9th February 2017
+# using easy_update
+# the commented out extensions were added by easy_update but broke the build
 exts_list = [   
     ('six', '1.10.0', {
         'source_urls': ['https://pypi.python.org/packages/source/s/six/'],

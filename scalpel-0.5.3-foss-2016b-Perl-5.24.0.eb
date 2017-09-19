@@ -28,15 +28,21 @@ source_urls = [SOURCEFORGE_SOURCE]
 dependencies = [
     ('CMake', '3.6.2'),
     ('Perl', '5.24.0'),
+    ('BamTools', '2.3.0'),
+    ('BCFtools', '1.1'),
+    ('SAMtools', '1.1'),
 ]
 
 executables = ['scalpel-discovery', 'scalpel-export', 'FindDenovos.pl', 'FindSomatic.pl', 'FindVariants.pl']
 
-files_to_copy = [(executables, 'bin/'), 'Usage*','MLDBM*', 'SequenceIO.pm']
+files_to_copy = [(executables, 'bin/'), 'Usage*','MLDBM*', 'SequenceIO.pm', 'Utils.pm', 
+    'HashesIO.pm', 'Text*', 'Microassembler*', 'Parallel*']
 
 sanity_check_paths = {
     'files': ['bin/scalpel-discovery', 'bin/FindVariants.pl'],
     'dirs': ["."]
 }
+
+modextrapaths = { 'PERL5LIB': '' }
 
 moduleclass = 'bio'

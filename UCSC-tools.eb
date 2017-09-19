@@ -5,7 +5,7 @@
 easyblock = 'MakeCp'
 
 name = 'UCSC-tools'
-version = '3.2.2'
+version = '3.4.1'
 
 homepage = 'http://hgdownload.cse.ucsc.edu/downloads.html'
 description = """ GenomeBrowser and related utilities """
@@ -13,7 +13,7 @@ description = """ GenomeBrowser and related utilities """
 toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
 source_urls = ['http://hgdownload.cse.ucsc.edu/admin/']
-sources = ['jksrc.v322.zip']
+sources = ['jksrc.v341.zip']
 
 prebuildopts = ' MACHTYPE=$(echo $MACHTYPE | cut -d"-" -f1) &&'
 prebuildopts += ' MYSQLLIBS=$(mysql_config --libs) &&'
@@ -190,7 +190,7 @@ binary_files = ["aarToAxt","addAveMedScoreToPsls", "addCols", "affyPairsToSample
                 "wigToBigWig", "wordLine", "xmlCat", "xmlToSql"]
 
 files_to_copy = [
-    (['%(builddir)s/bin/x86_64/%s' % x for x in binary_files], "bin"),
+    (['%(builddir)s/bin/x86_64/%s'.format(x) for x in binary_files], "bin"),
     "README"
 ]
 

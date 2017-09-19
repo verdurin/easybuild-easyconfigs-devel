@@ -8,8 +8,7 @@ homepage = 'https://bitbucket.org/aroth85/%(namelower)s/'
 description = """PyDP is library for implementing Dirichlet Process mixture models (DPMM).
  The goal of PyDP is to provide a pure Python implementation of various algorithms for working
  DPMMs. As a design choice PyDP should have no dependencies on any libraries which are not
- supported by the [PyPy](http://pypy.org) Python interpreter.
- """
+ supported by the [PyPy](http://pypy.org) Python interpreter."""
 
 toolchain = {'name': 'foss', 'version': '2016b'}
 
@@ -23,7 +22,7 @@ dependencies = [
 
 sanity_check_paths = {
     'files': [],
-    'dirs': ["."]
+    'dirs': ['lib/python%(pyshortver)s/site-packages/yaml']
 }
 
 moduleclass = 'math'

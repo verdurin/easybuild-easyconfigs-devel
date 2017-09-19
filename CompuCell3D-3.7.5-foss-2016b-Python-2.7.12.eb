@@ -13,7 +13,7 @@ description = """CompuCell3D is an open-source simulation environment for multi-
 
  It uses [the] Cellular Potts Model to model cell behavior. """
 
-toolchain = {'name': 'intel', 'version': '2016b'}
+toolchain = {'name': 'foss', 'version': '2016b'}
 toolchainopts = {}  # toolchain options, e.g. opt, pic, usempi, optarch, ...
 
 # For sources line to work correctly with --try-software-version, you MUST employ %s OR use a construct like SOURCE_TAR_GZ
@@ -25,7 +25,7 @@ patches = []
 dependencies = [
     ('Python', '2.7.12'),
     ('Qt', '4.8.7'),
-    ('PyQT', '4.11.4'), # Update to 2016b required
+    ('PyQt', '4.11.4'), # Update to 2016b required
     ('SWIG', '3.0.10', '-Python-%(pyver)s'),
     ('VTK', '7.0.0', '-Python-%(pyver)s'),
     ('Qwt', '6.1.3'),

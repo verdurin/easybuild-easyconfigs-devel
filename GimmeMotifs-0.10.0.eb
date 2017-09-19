@@ -20,11 +20,18 @@ channels = ['bioconda', 'r']
 
 builddependencies = [('Anaconda2', '4.2.0')]
 
+dependencies = [('BEDTools', '2.26.0', '-foss-2016b')]
+
 sanity_check_paths = {
     'files': ['bin/gimme', 'bin/guess-ploidy.py', 'bin/intron_exon_reads.py'],
     'dirs': ['bin', 'conda-meta', 'data']
 }
 
 sanity_check_commands = ['gimme motifs -h']
+
+modloadmsg = "Owing to problems with one of the motif finding algorithms\n"
+modloadmsg += "please use the following parameter, to select which ones\n "
+modloadmsg += "to use:\n"
+modloadmsg += "-t Homer,MDmodule,MotifSampler,AMD,Improbizer,BioProspector,trawler,JASPAR,HMS,Posmo\n"
 
 moduleclass = 'bio'

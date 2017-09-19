@@ -23,7 +23,9 @@ toolchainopts = {'static': True}
 source_urls = ['https://github.com/bedops/bedops/archive/']
 sources = ['v%(version)s.tar.gz']
 
-prebuildopts = 'unset LIBS && '
+patch = ['%(name)s-%(version)s-jansson-gcc.patch']
+
+#prebuildopts = 'unset LIBS && '
 
 buildopts = ' & make install'
 

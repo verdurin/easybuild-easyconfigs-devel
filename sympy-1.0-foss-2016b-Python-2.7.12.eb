@@ -1,14 +1,8 @@
-# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
-#
-# Author: Adam Huffman
-# adam.huffman@crick.ac.uk
-# The Francis Crick Institute
-
-easyblock = "PythonPackage"
+easyblock = 'PythonPackage'
 
 name = 'sympy'
 version = '1.0'
-versionsuffix = '-Python-$(pyver)s'
+versionsuffix = '-Python-%(pyver)s'
 
 homepage = 'http://sympy.org/'
 description = """SymPy is a Python library for symbolic mathematics. It aims to
@@ -18,18 +12,22 @@ description = """SymPy is a Python library for symbolic mathematics. It aims to
 
 toolchain = {'name': 'foss', 'version': '2016b'}
 
-source_urls = ['https://github.com/sympy/%(name)s/releases/download/%(name)s-%(version)s/']
-sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+#Patch to fix tests
+patches = ['sympy-1.0_tests-unicode.patch']
 
 dependencies = [
     ('Python', '2.7.12'),
+    ('mpmath', '0.19', '-Python-%(pyver)s'),
 ]
 
 runtest = 'python setup.py test'
 
 sanity_check_paths = {
     'files': [],
-    'dirs': ['lib/python%(pyshortver)s/site-packages/sympy'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/%(name)s-%(version)s-py%(pyshortver)s.egg/%(name)s'],
 }
 
 moduleclass = 'math'
