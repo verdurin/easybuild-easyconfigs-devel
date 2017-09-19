@@ -1,0 +1,31 @@
+easyblock = 'PythonPackage'
+
+name = 'fluff'
+version = '2.1.0'
+versionsuffix = '-%(pyver)s'
+
+homepage = 'http://fluff.readthedocs.io/en/latest/index.html'
+description = """fluff is a software package that allows for simple exploration, clustering
+ and visualization of high-throughput sequencing experiments mapped to a reference genome. The
+ package contains three command-line tools to generate publication-quality figures:
+
+ heatmap: clustering and visualization in a heatmap
+ bandplot: visualization of average profiles of clustered data in small multiples
+ profile: creating genome browser-like genomic profiles"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['https://github.com/simonvh/%(name)s/releases/download/v%(version)s/']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('cURL', '7.49.1'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'

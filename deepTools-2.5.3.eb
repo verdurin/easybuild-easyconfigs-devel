@@ -1,0 +1,27 @@
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'Conda'
+
+name = 'deepTools'
+version = '2.5.3'
+
+homepage = 'http://deeptools.readthedocs.io/en/latest/index.html'
+description = """deepTools is a suite of python tools particularly developed for the efficient analysis
+ of high-throughput sequencing data, such as ChIP-seq, RNA-seq or MNase-seq."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+requirements = "%(namelower)s python>=2.7.14"
+channels = ['bioconda']
+
+builddependencies = [('Anaconda2', '4.2.0')]
+
+
+sanity_check_paths = {
+    'files': ['bin/multiBamSummary', 'bin/plotPCA', 'bin/bamCompare'],
+    'dirs': ['bin', 'conda-meta']
+}
+
+moduleclass = 'bio'

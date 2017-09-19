@@ -1,0 +1,8 @@
+--- netMHCIIpan-3.1/NetMHCIIpan-3.1.pl	2015-10-10 19:22:12.565160221 +0100
++++ netMHCIIpan-3.1.new/NetMHCIIpan-3.1.pl	2017-07-06 12:47:59.138113329 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl -w
++#!/usr/bin/env perl -w
+ 
+ # Author: Edita Karosiene, 07-01-2013
+ # 		  Massimo Andreatta, 20-12,2014

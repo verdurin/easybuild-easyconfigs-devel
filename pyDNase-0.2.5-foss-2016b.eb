@@ -1,0 +1,44 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'Bundle'
+
+name = 'pyDNase'
+version = '0.2.5'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://pythonhosted.org/pyDNase'
+description = """pyDNase is a suite of tools for analysing DNase-seq data - pyDNase comes with
+ several analysis scripts covering several common use cases of DNase-seq analysis, and also an
+ implementation of the Wellington, Wellington 1D, and Wellington-boostrap footprinting algorithms."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('numpy', '1.11.1', versionsuffix),
+    ('matplotlib', '1.5.3', versionsuffix),
+    ('Pysam', '0.9.0', versionsuffix),
+]
+
+exts_defaultclass = 'PythonPackage'
+
+exts_list = [
+    ('clint', '0.5.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/c/clint/'],
+    }),
+    (name, version, {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pydnase/'],
+        'modulename': 'pyDNase',
+    }),
+]
+
+sanity_check_paths = {
+    'files': ['bin/dnase_cut_counter.py', 'bin/dnase_wig_tracks.py', 'bin/wellington_bootstrap.py'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages']
+}
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+moduleclass = 'bio'

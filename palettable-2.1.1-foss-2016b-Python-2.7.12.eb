@@ -1,0 +1,37 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Author: Adam Huffman
+# adam.huffman@crick.ac.uk
+# The Francis Crick Institute
+
+easyblock = 'PythonPackage'
+
+name = 'palettable'
+version = '2.1.1'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://jiffyclub.github.io/palettable/'
+description = """Palettable (formerly brewer2mpl) is a library of color palettes for Python.
+ It's written in pure Python with no dependencies, but it can supply color maps for matplotlib.
+ You can use Palettable to customize matplotlib plots or supply colors for a web application.
+
+Palettable has color palettes from:
+
+Colorbrewer2
+Cubehelix
+Tableau
+The Wes Anderson Palettes blog"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = ['https://github.com/jiffyclub/palettable/archive/']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [('Python', '2.7.12')]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/'],
+}
+
+moduleclass = 'lang'

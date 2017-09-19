@@ -1,0 +1,27 @@
+easyblock = 'ConfigureMake'
+
+name = 'faiss'
+version = '0.1'
+
+homepage = 'https://github.com/facebookresearch/faiss'
+description = """Faiss is a library for efficient similarity search and clustering of dense
+ vectors. It contains algorithms that search in sets of vectors of any size, up to ones that
+ possibly do not fit in RAM. It also contains supporting code for evaluation and parameter
+ tuning. Faiss is written in C++ with complete wrappers for Python (versions 2 and 3). Some
+ of the most useful algorithms are implemented on the GPU. It is developed by Facebook AI Research."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://www.example.com']
+
+patches = []
+
+dependencies = []
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'base'

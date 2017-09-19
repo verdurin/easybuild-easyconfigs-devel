@@ -1,0 +1,27 @@
+easyblock = 'CMakeMake'
+
+name = 'ngs-tools'
+version = '2.8.2'
+
+homepage = 'https://github.com/ncbi/ngs-tools'
+description = """Next Generation Sequencing tools from NCBI."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = ['https://github.com/ncbi/ngs-tools/archive/']
+sources = ['%(version)s.tar.gz']
+
+# override default of using $HOME/ncbi-outdir
+configopts = "--build-prefix=%(builddir)s/ncbi-outdir"
+
+dependencies = [('CMake', '3.6.2')]
+
+separate_build_dir = True
+
+sanity_check_paths = {
+    'files': ['jar/ngs-java.jar', ('lib/libngs-sdk.%s' % SHLIB_EXT, 'lib64/libngs-sdk.%s' % SHLIB_EXT),
+              ('lib/libngs-adapt-c++.a', 'lib64/libngs-adapt-c++.a'), ('lib/libngs-c++.a', 'lib64/libngs-c++.a')],
+    'dirs': ['include/ngs', 'share'],
+}
+
+moduleclass = 'bio'

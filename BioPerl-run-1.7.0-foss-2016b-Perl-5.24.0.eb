@@ -1,0 +1,33 @@
+easyblock = 'Bundle'
+
+name = 'BioPerl-run'
+version = '1.7.0'
+versionsuffix = '-Perl-%(perlver)s'
+
+homepage = 'http://www.bioperl.org/'
+description = """Bioperl is the product of a community effort to produce Perl code which is useful in biology.
+ Examples include Sequence objects, Alignment objects and database searching objects."""
+
+toolchain = {'version': '2016b', 'name': 'foss'}
+
+dependencies = [
+    ('Perl', '5.24.0'),
+    ('BioPerl', '%(version)s', versionsuffix),
+]
+
+parallel = 4
+
+unwanted_env_vars = {}
+start_dir = '%(builddir)s/'
+exts_list = [
+    ('Config::Any', '0.32', {'source_tmpl': 'Config-Any-0.32.tar.gz', 'source_urls': ['http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/']}),
+    ('File::Sort', '1.01', {'source_tmpl': 'File-Sort-1.01.tar.gz', 'source_urls': ['http://search.cpan.org/CPAN/authors/id/C/CN/CNANDOR/']}),
+    ('BioPerl-run', '1.7.0', {'modulename': 'Bio::Perl::run', 'source_tmpl': 'release-1-7-0.tar.gz', 'source_urls': ['https://github.com/bioperl/bioperl-run/archive/']}),
+
+]
+# this is a bundle of Perl modules
+exts_defaultclass = 'PerlModule'
+exts_filter = ('perldoc -lm %(ext_name)s ', '')
+modextrapaths = {'PERL5LIB': 'lib/perl5/site_perl/%(perlver)s/'}
+
+moduleclass = 'bio'

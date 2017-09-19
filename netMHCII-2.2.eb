@@ -1,0 +1,36 @@
+easyblock = 'Tarball'
+
+name = 'netMHCII'
+version = '2.2'
+
+homepage = 'http://www.cbs.dtu.dk/services/NetMHCII/'
+description = """NetMHCII 2.2 predicts binding of peptides to a number of different HLA-DR
+ alleles using position specific weight matrices (PSSM). Predictions can be
+ obtained for 14 HLA-DR alleles covering the 9 HLA-DR supertypes, and five 
+ mouse  H2-IA alleles."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+# Accept the license agreement at http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netMHCII and
+# download the tarball
+source_urls = ['http://www.cbs.dtu.dk/services/NetMHCII/']
+
+sources = [
+    '%(name)s-%(version)s.Linux.tar.Z',
+    'data.tar.gz'
+]
+
+# Fix the hard-coded path in the wrapper script
+postinstallcmds = " sed -i -e s!/usr/cbs/bio/src/netMHCII-2.2!%(installdir)s! netMHCII && gunzip -c data.tar.gz | tar xvf - "
+#postinstallcmds += "mv data %(name)s-2.2"
+
+osdependencies = ['ncompress']
+
+sanity_check_paths = {
+    'files': ['%(name)s'],
+    'dirs': ["."]
+}
+
+modextrapaths = {'PATH': ['']}
+
+moduleclass = 'bio'

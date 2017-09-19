@@ -1,0 +1,37 @@
+# Note:
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# It was auto-generated based on a template easyconfig, so it should be used with care.
+easyblock = 'Tarball'
+
+name = 'rMATS-turbo-UCS4'
+version = '0.1'
+
+homepage = 'http://www.example.com'
+description = """rMATS-turbo is the C/Cython version of rMATS
+ (refer to http://rnaseq-mats.sourceforge.net/user_guide.htm). The main difference between
+ rMATS-turbo and rMATS is speed and space usage. The speed of rMATS-turbo is ~100 times faster
+ and the output file is ~1000 times smaller than rMATS. These advantages make analysis and
+ storage of large scale dataset easy and convenient."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+sources = ['%(name)s.tar.gz']
+# Private download only at present
+
+postinstallcmds = ["chmod -R a+rx %(installdir)s/rmats.py"]
+
+dependencies = [
+    ('Python', '2.7.12', '-foss-2016b'),
+    ('GSL', '1.16', '-foss-2016b'),
+]
+
+
+
+sanity_check_paths = {
+    'files': ['rmats.py'],
+    'dirs': ["."]
+}
+
+modextrapaths = {'PATH': ['']}
+
+moduleclass = 'bio'

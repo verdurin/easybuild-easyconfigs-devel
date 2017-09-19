@@ -1,0 +1,32 @@
+easyblock = 'CMakeMake'
+
+name = 'Salmon'
+version = '0.8.2'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/COMBINE-lab/salmon'
+description = """Salmon is a wicked-fast program to produce a highly-accurate,
+ transcript-level quantification estimates from RNA-seq data."""
+
+toolchain = {'name': 'intel', 'version': '2016b'}
+toolchainopts = {'optarch': True, 'pic': True, 'openmp': True}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/COMBINE-lab/salmon/archive/']
+
+patches = [
+    'Salmon-%(version)s_skip-included-Jellyfish.patch',
+]
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('Boost', '1.63.0', versionsuffix),
+    ('tbb', '2017_U5'),
+    ('Jellyfish', '2.2.4'),
+]
+
+builddependencies = [('CMake', '3.6.1')]
+
+parallel = 1
+
+moduleclass = 'bio'

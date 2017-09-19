@@ -1,0 +1,28 @@
+
+name = 'AmberTools'
+version = '16'
+# Patch levels from http://ambermd.org/bugfixesat.html
+patchlevels = '19'  # (AmberTools)
+versionsuffix = '-patchlevels-%s' %(patchlevels)
+
+homepage = 'http://ambermd.org/amber.html'
+description = """Amber (originally Assisted Model Building with Energy
+ Refinement) is software for performing molecular dynamics and structure
+ prediction."""
+
+toolchain = {'name': 'intel', 'version': '2016b'}
+toolchainopts = {'usempi': True}
+
+sources = [
+    'AmberTools%(version)s.tar.bz2',
+]
+
+patches = ['Amber-%(version)s_fix-hardcoding.patch']
+
+dependencies = [
+    ('netCDF', '4.4.1'),
+    ('netCDF-Fortran', '4.4.4'),
+    ('Python', '2.7.12'),
+]
+
+moduleclass = 'chem'

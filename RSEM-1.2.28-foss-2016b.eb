@@ -1,0 +1,34 @@
+easyblock = 'ConfigureMake'
+
+name = 'RSEM'
+version = '1.2.28'
+
+homepage = 'http://deweylab.github.io/RSEM/'
+description = "RNA-Seq by Expectation-Maximization"
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/deweylab/%(name)s/archive/']
+
+patches = ['%(name)s-%(version)s_makefiles.patch']
+
+dependencies = [
+    ('ncurses', '6.0'),
+    ('zlib', '1.2.8'),
+]
+
+installopts = 'prefix=%(installdir)s'
+
+parallel = 4
+
+unwanted_env_vars = {}
+skipsteps = ['configure']
+start_dir = '%(builddir)s/%(name)s-%(version)s/'
+
+sanity_check_paths = {
+    'files': ['bin/%(namelower)s-calculate-expression', 'bin/%(namelower)s-plot-model', 'bin/%(namelower)s-plot-transcript-wiggles', 'bin/%(namelower)s-bam2wig', 'bin/%(namelower)s-generate-data-matrix', 'bin/%(namelower)s-run-em', 'bin/convert-sam-for-%(namelower)s'],
+    'dirs': ['bin/samtools-1.3'],
+}
+
+moduleclass = 'bio'

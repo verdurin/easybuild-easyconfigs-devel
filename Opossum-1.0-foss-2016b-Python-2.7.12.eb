@@ -1,0 +1,40 @@
+# This is an EasyBuild reciPY, as per https://github.com/easybuilders/easybuild
+easyblock = 'Tarball'
+
+name = 'Opossum'
+version = '1.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/BSGOxford/Opossum'
+description = """Opossum is a tool to pre-process RNA-seq reads prior to variant calling. Currently,
+ variant callers do not generally behave well with reads encompassing intronic regions. Opossum
+ splits the reads to get rid of the intronic parts. At the same time, it performs several quality
+ control measures such as discarding secondary alignments, poorly mapped reads and read pairs where
+ the two reads are pointing outwards or in the same direction, or that have been mapped in different
+ chromosomes. Opossum also discards duplicate reads based on the start and end positions of the read
+ pair. Furthermore, it merges overlapping paired-end reads.
+
+ Opossum has been designed to work specifically with Platypus, but it can be used equally well with
+ other variant callers such as GATK."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/BSGOxford/Opossum/archive/']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('Pysam', '0.10.0', versionsuffix),
+]
+
+start_dir = '%(name)s-%(version)s'
+
+postinstallcmds = ['mkdir %(installdir)s/bin && mv %(installdir)s/*.py %(installdir)s/bin \
+                   && chmod 755 %(installdir)s/bin/*']
+
+sanity_check_paths = {
+    'files': ['bin/%(name)s.py', 'bin/compute_mismatch_rates.py', 'bin/plot_mismatch_rates.py'],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'

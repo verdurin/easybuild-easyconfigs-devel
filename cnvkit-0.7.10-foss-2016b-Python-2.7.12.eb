@@ -1,0 +1,35 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+easyblock = 'PythonPackage'
+
+name = 'cnvkit'
+version = '0.7.10'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://cnvkit.readthedocs.org/'
+description = """Copy number variant detection from targeted DNA sequencing"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/etal/cnvkit/archive']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('Biopython', '1.68', versionsuffix),
+    ('%(name)s-bundle', '%(version)s', versionsuffix),
+    ('R-bundle-%(name)s', '0.2', '-R-3.3.1-bioc-3.3-libX11-1.6.3'),
+]
+
+sanity_check_paths = {
+    'files': ['bin/cnvkit.py', 'bin/reference2targets.py', 'bin/vcf_sample_filter.py',
+              'lib/python%(pyshortver)s/site-packages/CNVkit-%(version)s-py%(pyshortver)s.egg'],
+    'dirs': []
+}
+
+options = {'modulename': 'cnvlib'}
+
+#sanity_check_commands = [ 'cd test; make' ]
+
+moduleclass = 'bio'

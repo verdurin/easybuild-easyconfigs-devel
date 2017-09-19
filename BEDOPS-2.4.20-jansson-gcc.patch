@@ -1,0 +1,20 @@
+# Fix for bad GCC version detection by the bundled
+# third-party library jansson
+# Patch by:
+# Adam Huffman
+# The Francis Crick Institute
+
+
+diff -ur bedops-2.4.19/system.mk/Makefile.linux bedops-2.4.19.new/system.mk/Makefile.linux
+--- bedops-2.4.20/system.mk/Makefile.linux      2016-05-09 21:14:15.000000000 +0100
++++ bedops-2.4.20.new/system.mk/Makefile.linux  2016-05-30 09:09:48.846969703 +0100
+@@ -156,7 +156,7 @@
+
+ ${PARTY3}/jansson/lib/libjansson.a: $(WHICHJANSSON).tar.bz2
+        bzcat $^ | tar -x -C ${PARTY3}
+-       cd ${PARTY3}/${JANSSONVERSION} && ./configure --prefix=${WDIR}/${PARTY3}/${JANSSONVERSION} && $(MAKE) && $(MAKE) install && cd ${WDIR} && rm -f jansson && ln -sf ${JANSSONVERSION} ${PARTY3}/jansson
++       cd ${PARTY3}/${JANSSONVERSION} && autoreconf -i && ./configure --prefix=${WDIR}/${PARTY3}/${JANSSONVERSION} && $(MAKE) && $(MAKE) install && cd ${WDIR} && rm -f jansson && ln -sf ${JANSSONVERSION} ${PARTY3}/jansson
+
+ $(PARTY3)/bzip2/libbz2.a: $(WHICHBZIP2).tar.bz2
+        bzcat $^ | tar -x -C ${PARTY3}
+

@@ -1,0 +1,23 @@
+easyblock = 'Conda'
+
+name = "QScintilla2"
+version = "2.9.3"
+
+homepage = 'https://www.riverbankcomputing.com/software/qscintilla/intro'
+description = """QScintilla2."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+requirements = "python=2.7 %(namelower)s=%(version)s pyqt qwt swig"
+channels = ['conda-forge']
+
+builddependencies = [('Anaconda2', '4.0.0')]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+sanity_check_commands = []
+
+moduleclass = 'vis'

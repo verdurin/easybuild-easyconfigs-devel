@@ -1,0 +1,24 @@
+easyblock = 'Conda'
+
+name = "PyClone"
+version = "0.12.3"
+variant = "Linux-x86_64"
+
+homepage = 'http://qiime.org/'
+description = """QIIME is an open-source bioinformatics pipeline for performing microbiome analysis from raw DNA sequencing data."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+requirements = "python=2.7 %(namelower)s=%(version)s matplotlib=1.5.3 PyDP PyYAML palettable eppl"
+channels = ['aroth85']
+
+builddependencies = [('Anaconda2', '4.0.0')]
+
+sanity_check_paths = {
+    'files': [''],
+    'dirs': []
+}
+
+#sanity_check_commands = ['print_qiime_config.py -t']
+
+moduleclass = 'bio'

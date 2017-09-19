@@ -1,0 +1,28 @@
+easyblock = 'PythonPackage'
+
+name = 'pyBigWig'
+version = '0.3.4'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/dpryan79/pyBigWig'
+description = """A python extension, written in C, for quick access to bigBed files and access to
+ and creation of bigWig files. This extension uses libBigWig for local and remote file access."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(version)s.tar.gz']
+source_urls = ['https://github.com/dpryan79/pyBigWig/archive/']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('cURL', '7.49.1'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+options = {'modulename': 'pyBigWig'}
+
+moduleclass = 'bio'

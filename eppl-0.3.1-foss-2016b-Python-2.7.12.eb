@@ -1,0 +1,25 @@
+easyblock = 'PythonPackage'
+
+name = 'eppl'
+version = '0.3.1'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://bitbucket.org/aroth85/%(namelower)s/'
+description = "Required by PyClone, written by the PyClone author."
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['%(version)s.tar.gz']
+source_urls = ['https://bitbucket.org/aroth85/%(namelower)s/get/']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('seaborn', '0.7.1', '-Python-%(pyver)s-tkinter'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/eppl']
+}
+
+moduleclass = 'math'

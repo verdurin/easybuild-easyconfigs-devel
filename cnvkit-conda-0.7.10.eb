@@ -1,0 +1,23 @@
+easyblock = 'Conda'
+
+name = "cnvkit-conda"
+version = "0.7.10"
+
+homepage = 'https://github.com/etal/cnvkit'
+description = """cnvkit via Conda"""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+requirements = "python=2.7 cnvkit=%(version)s"
+channels = ['conda-forge', 'r', 'bioconda']
+
+builddependencies = [('Anaconda2', '4.0.0')]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+sanity_check_commands = []
+
+moduleclass = 'bio'

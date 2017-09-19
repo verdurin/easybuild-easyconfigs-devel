@@ -1,0 +1,38 @@
+easyblock = 'ConfigureMake'
+
+name = 'QScintilla2'
+version = '2.9.4'
+versionsuffix = '-Python-2.7.12'
+
+homepage = 'https://www.riverbankcomputing.com/software/qscintilla'
+description = "QScintilla is a port to Qt of Neil Hodgson's Scintilla C++ editor control"
+
+toolchain = {'name': 'intel', 'version': '2016b'}
+
+source_urls = ['https://sourceforge.net/projects/pyqt/files/%(name)s/QScintilla-%(version)s/']
+sources = ['QScintilla_gpl-%(version)s.tar.gz']
+
+dependencies = [('PyQt', '4.11.4', versionsuffix)]
+
+start_dir = 'Qt4Qt5'
+
+skipsteps = ['configure']
+
+prebuildopts = "sed -i 's@\$\$\[QT_INSTALL_LIBS\]@%(installdir)s/lib@g' qscintilla.pro && "
+prebuildopts += "sed -i 's@\$\$\[QT_INSTALL_HEADERS\]@%(installdir)s/include@g' qscintilla.pro && "
+prebuildopts += "sed -i 's@\$\$\[QT_INSTALL_TRANSLATIONS\]@%(installdir)s/trans@g' qscintilla.pro && "
+prebuildopts += "sed -i 's@\$\$\[QT_INSTALL_DATA\]@%(installdir)s/data@g' qscintilla.pro && "
+prebuildopts += "sed -i 's@\$\$\[QT_HOST_DATA\]@%(installdir)s/data@g' qscintilla.pro && "
+prebuildopts += "qmake qscintilla.pro && "
+
+# also install Python bindings
+buildopts = " && cd ../Python && chmod u+x configure.py && python ./configure.py "
+buildopts += "--qsci-incdir=%(installdir)s/include --qsci-libdir=%(installdir)s/lib --pyqt=PyQt4 && "
+buildopts += "make && make install"
+
+sanity_check_paths = {
+    'files': ['lib/libqscintilla2.so'],
+    'dirs': ['include/Qsci', 'trans', 'qsci/api/python'],
+}
+
+moduleclass = 'vis'

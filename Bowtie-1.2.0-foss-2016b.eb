@@ -1,0 +1,23 @@
+# Modified from existing version by:
+# Robert Schmidt <rjeschmi@gmail.com>
+# Ottawa Hospital Research Institute - Bioinformatics Team
+# Adam Huffman <adam.huffman@crick.ac.uk>
+# The Francis Crick Institute
+name = 'Bowtie'
+version = '1.2.0'
+majversion = '1.2'
+
+homepage = 'http://bowtie-bio.sourceforge.net/index.shtml'
+description = """Bowtie is an ultrafast, memory-efficient short read aligner.
+It aligns short DNA sequences (reads) to the human genome.
+"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'pic': True}
+
+dependencies = [('tbb', '2017_U5')]
+
+sources = ['%(namelower)s-1.2-source.zip']
+source_urls = ['http://download.sourceforge.net/bowtie-bio/']
+
+moduleclass = 'bio'

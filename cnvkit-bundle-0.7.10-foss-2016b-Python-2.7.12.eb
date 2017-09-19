@@ -1,0 +1,50 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+easyblock = 'Bundle'
+
+name = 'cnvkit-bundle'
+version = '0.7.10'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://cnvkit.readthedocs.org/en/latest/index.html'
+description = """CNVkit is a Python library and command-line software toolkit to infer and
+ visualize copy number from targeted DNA sequencing data. It is designed for use with hybrid
+ capture, including both whole-exome and custom target panels, and short-read sequencing 
+ platforms such as Illumina and Ion Torrent. This is a bundle to provide dependencies for cnvkit
+ that aren't available in the standard EasyBuild Python."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('libjpeg-turbo', '1.3.1'),
+]
+
+exts_list = [
+    ('reportlab', '3.3.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/reportlab'],
+    }),
+    ('PyVCF', '0.6.8', {
+        'modulename': 'vcf',
+        'source_urls': ['https://pypi.python.org/packages/source/P/PyVCF'],
+    }),
+    ('pysam', '0.9.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pysam'],
+    }),
+]
+
+# specify that Bundle easyblock should run a full sanity check, rather than just trying to load the module
+full_sanity_check = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+moduleclass = 'bio'

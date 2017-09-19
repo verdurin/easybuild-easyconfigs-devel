@@ -1,0 +1,36 @@
+easyblock = 'Tarball'
+
+name = 'netMHCIIpan'
+version = '3.1a'
+versionsuffix = '-Perl-%(perlver)s'
+
+homepage = 'http://www.cbs.dtu.dk/services/NetMHCIIpan/'
+description = """The NetMHCIIpan 3.1 software predicts  binding of peptides to MHC class II
+ molecules.  The predictions are available for all three human MHC class II
+ isotypes: HLA-DR, HLA-DP and HLA-DQ, as well as for mouse molecules (H-2)."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+# Accept the license agreement at http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netMHCIIpan and
+# download the tarball
+source_urls = ['http://www.cbs.dtu.dk/services/NetMHCIIpan-3.1/']
+
+sources = [
+    '%(name)s-%(version)s.Linux.tar.gz',
+    'data.tar.gz'
+]
+
+patches = [('%(name)s-path.patch'),('%(name)s-perl-shebang.patch')]
+
+preinstallopts = 'mv data %(name)s-3.1'
+
+dependencies = [('Perl', '5.24.0', '-foss-2016b', True)]
+
+sanity_check_paths = {
+    'files': ['%(name)s'],
+    'dirs': ["."]
+}
+
+modextrapaths = {'PATH': ['']}
+
+moduleclass = 'bio'

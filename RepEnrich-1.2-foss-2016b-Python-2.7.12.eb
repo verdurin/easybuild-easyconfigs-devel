@@ -1,0 +1,30 @@
+easyblock = 'BinariesTarball'
+
+name = 'RepEnrich'
+version = '1.2'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/nskvir/RepEnrich'
+description = """RepEnrich is a method to estimate repetitive element enrichment using high-throughput
+ sequencing data. """
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/nskvir/RepEnrich/archive/']
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('Biopython', '1.68', versionsuffix),
+    ('bowtie', '0.12.9'),
+    ('samtools', '0.1.19'),
+    ('BEDTools', '2.23.0'),
+]
+
+# The sanity test MUST be tuned before going production and submitting your contribution to upstream git repositories
+sanity_check_paths = {
+    'files': ['%(name)s.py'],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'

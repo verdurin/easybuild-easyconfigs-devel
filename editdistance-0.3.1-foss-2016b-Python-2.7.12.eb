@@ -1,0 +1,29 @@
+easyblock = "PythonPackage"
+
+name = 'editdistance'
+version = '0.3.1'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://www.github.com/aflc/editdistance'
+description = """Fast implementation of the edit distance(Levenshtein distance).
+
+ This library simply implements Levenshtein distance with C++ and Cython.
+
+ The algorithm used in this library is proposed by Heikki Hyyrö, “Explaining and
+ extending the bit-parallel approximate string matching algorithm of Myers”, (2001)."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = ['https://pypi.python.org/packages/source/e/%(name)s']
+sources = ['%(name)s-%(version)s.tar.gz']
+
+dependencies = [
+    ('Python', '2.7.12'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/'],
+}
+
+moduleclass = 'lib'

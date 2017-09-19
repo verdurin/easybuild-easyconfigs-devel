@@ -1,0 +1,34 @@
+easyblock = 'Tarball'
+
+name = 'netMHCpan'
+version = '3.0a'
+
+homepage = 'http://www.cbs.dtu.dk/services/NetMHCpan/'
+description = """NetMHCpan server predicts binding of peptides to any MHC molecule of known
+ sequence using artificial neural networks (ANNs). The method is trained on more than 180,000
+ quantitative binding data covering 172 MHC molecules from human (HLA-A, B, C, E), mouse (H-2),
+ cattle (BoLA), primates (Patr, Mamu, Gogo) and swine (SLA). Furthermore, the user can obtain
+ binding predictions to the any custom MHC class I molecule by uploading a full length MHC
+ protein sequence."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+# Accept the license agreement at http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netMHCpan and
+# download the tarball
+source_urls = ['http://www.cbs.dtu.dk/services/NetMHCpan-3.0/']
+
+sources = [
+    '%(name)s-%(version)s.Linux.tar.gz',
+    'data.tar.gz'
+]
+
+preinstallopts = 'mv data %(name)s-3.0'
+# Fix the hard-coded path in the wrapper script
+preconfigopts = " sed -i -e s!/usr/cbs/packages/netMHCpan/3.0/netMHCpan-3.0!%(installdir)s! netMHCpan && " 
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'

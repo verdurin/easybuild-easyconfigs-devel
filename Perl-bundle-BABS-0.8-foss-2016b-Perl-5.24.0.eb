@@ -1,0 +1,76 @@
+easyblock = 'Bundle'
+
+name = 'Perl-bundle-BABS'
+version = '0.8'
+versionsuffix = '-Perl-%(perlver)s'
+
+homepage = 'http://www.crick.ac.uk'
+description = """Bundle of Perl modules for BABS. Currently includes: Set::IntervalTree, IO::Zlib, 
+ File::MMagici, UNIVERSAL::require, Bio::Grep and Class::MethodMaker"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+# this is a bundle of Perl modules
+exts_defaultclass = 'PerlModule'
+exts_filter = ("perldoc -lm %(ext_name)s ", "")
+
+dependencies = [
+    ('Perl', '5.24.0'),
+    ('BioPerl', '1.7.0', versionsuffix),
+    ('vmatch', '2.2.5-Linux_x86_64-64bit', '', True),
+]
+
+exts_list = [
+    ('Set::IntervalTree', '0.10-OD', {
+        'source_tmpl': 'Set-IntervalTree-0.10-OD.tar.gz',
+	# this is hosted as a local fork at
+        # /camp/stp/babs/working/software/sources/cld-master/depends/Set-IntervalTree-0.10-OD
+    }),
+    ('IO::Zlib', '1.10', {
+        'source_tmpl': 'IO-Zlib-1.10.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/T/TO/TOMHUGHES/'],
+    }),
+    ('File::MMagic', '1.30', {
+        'source_tmpl': 'File-MMagic-1.30.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/K/KN/KNOK'],
+    }),
+    ('UNIVERSAL::require', '0.18', {
+        'source_tmpl': 'UNIVERSAL-require-0.18.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/'],
+    }),
+    ('Config::Any', '0.32', {
+        'source_tmpl': 'Config-Any-0.32.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/'],
+    }),
+    ('File::Sort', '1.01', {
+        'source_tmpl': 'File-Sort-1.01.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/C/CN/CNANDOR/'],
+    }),
+    ('Bio::Grep', '0.10.6', {
+        'source_tmpl': 'Bio-Grep-v0.10.6.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/L/LI/LIMAONE/'],
+    }),
+    ('Class::MethodMaker', '2.24', {
+        'source_tmpl': 'Class-MethodMaker-2.24.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/class-methodmaker/'],
+    }),
+    ('Carp::Assert', '0.12', {
+        'source_tmpl': 'Carp-Assert-0.21.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/'],
+    }),
+    ('String::Approx', '3.28', {
+        'source_tmpl': 'String-Approx-3.28.tar.gz',
+        'source_urls': ['http://search.cpan.org/CPAN/authors/id/J/JH/JHI/'],
+    }), 
+]
+
+modextrapaths = {
+    'PERL5LIB': 'lib/perl5/site_perl/%(perlver)s/'
+}
+
+sanity_check_paths = {
+    'files': ['lib/perl5/site_perl/%(perlver)s/x86_64-linux-thread-multi/Set/IntervalTree.pm'],
+    'dirs': ["."]
+}
+
+moduleclass = 'bio'

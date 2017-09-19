@@ -1,0 +1,32 @@
+# Derived from the original Amber 16 easyconfig
+# Modified for AmberTools by:
+# Adam Huffman
+# The Francis Crick Institute
+
+name = 'AmberTools'
+version = '16'
+# Patch levels from http://ambermd.org/bugfixesat.html
+patchlevels = '20'  # (AmberTools)
+versionsuffix = '-patchlevels-%s' %(patchlevels)
+
+homepage = 'http://ambermd.org/amber.html'
+description = """Amber (originally Assisted Model Building with Energy
+ Refinement) is software for performing molecular dynamics and structure
+ prediction."""
+
+toolchain = {'name': 'intel', 'version': '2017a'}
+toolchainopts = {'usempi': True}
+
+sources = [
+    'AmberTools%(version)s.tar.bz2',
+]
+
+patches = ['Amber-%(version)s_fix-hardcoding.patch']
+
+dependencies = [
+    ('netCDF', '4.4.1.1'),
+    ('netCDF-Fortran', '4.4.4'),
+    ('Python', '2.7.13'),
+]
+
+moduleclass = 'chem'

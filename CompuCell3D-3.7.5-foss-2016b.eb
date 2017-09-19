@@ -1,0 +1,39 @@
+
+easyblock = 'CMakeMake'
+
+name = 'CompuCell3D'
+version = '3.7.5'
+
+homepage = 'http://www.compucell3d.org/'
+description = """CompuCell3D is an open-source simulation environment for multi-cell, single-cell-based
+ modeling of tissues, organs and organisms. It uses the Cellular Potts Model to model cell behaviour."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = [SOURCEFORGE_SOURCE]
+
+dependencies = [
+    ('QT', '4.8'),
+    ('PyQT', ''),
+    ('VTK', ''),
+    ('Python', '2.7.12'),
+]
+
+runtest = "python setup.py test"
+
+sanity_check_paths = {
+    'files': ['bin/bam_stat.py', 'bin/overlay_bigwig.py', 'bin/split_paired_bam.py'],
+    'dirs': ["bin", "lib"]
+}
+
+moduleclass = 'bio'
+
+#Qt (version 4.6 or higher recommended) 
+#PyQt (with OpenGL modules) 
+#SWIG (version 1.3 or higher recommended) 
+#VTK (with Python wrappers, version 5.4 or higher recommended) 
+#Qwt (and PyQwt, version 4.2 or higher recommended) 
+#QScintilla (version 1.7 or higher recommended) 
+#CMake (CMake-GUI is recommended) 
+#Python (version 2.6 or higher recommended) 

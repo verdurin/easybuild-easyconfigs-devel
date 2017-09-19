@@ -1,0 +1,11 @@
+--- netMHCIIpan-3.1/netMHCIIpan	2015-09-24 15:08:36.257419196 +0100
++++ netMHCIIpan-3.1.new/netMHCIIpan	2017-07-06 12:40:02.965062000 +0100
+@@ -11,7 +11,7 @@
+ ###############################################################################
+ 
+ # full path to the NetMHCIIpan 3.1 directory (mandatory)
+-setenv	NMHOME	/usr/cbs/packages/netMHCIIpan/3.1/netMHCIIpan-3.1
++setenv	NMHOME	/camp/apps/eb/dev/software/netMHCIIpan/3.1a
+ 
+ # determine where to store temporary files (must be writable to all users)
+ 

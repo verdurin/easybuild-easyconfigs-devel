@@ -1,0 +1,46 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'Bundle'
+
+name = 'Reddy-bundle'
+version = '1.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://www.crick.ac.uk'
+description = """Bundle of Python extensions for the Reddy lab, Francis Crick Institute."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+dependencies = [
+    ('Python', '2.7.12'),
+    ('matplotlib', '2.0.0', versionsuffix),
+]
+
+exts_defaultclass = 'PythonPackage'
+
+exts_list = [
+    ('patsy', '0.4.1', {
+	'source_urls': ['https://pypi.python.org/packages/source/p/patsy/'],
+	'source_tmpl': 'patsy-%(version)s.zip',
+    }),
+    ('statsmodels', '0.8.0', {
+	'source_urls': ['https://pypi.python.org/packages/source/s/statsmodels/'],
+    }),
+    ('praw', '4.4.0', {
+	'source_urls': ['https://pypi.python.org/packages/source/p/praw/'],
+    }),
+]
+
+modextrapaths = {
+    'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages']
+}
+
+moduleclass = 'lang'

@@ -1,0 +1,26 @@
+easyblock = 'RPackage'
+
+name = 'R-CellCODE'
+version = '0.99.0'
+versionsuffix = '-R-%(rver)s-bioc-3.3-libX11-1.6.3'
+
+homepage = 'http://www.pitt.edu/~mchikina/CellCODE/'
+description = """A set of tools for analyzing differntial expression in mixture datasets"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = [
+    'http://www.pitt.edu/~mchikina/CellCODE/',
+]
+sources = ['CellCODE_%(version)s.tar.gz']
+
+dependencies = [
+    ('R', '3.3.1', '-bioc-3.3-libX11-1.6.3'),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': [''],
+}
+
+moduleclass = 'bio'

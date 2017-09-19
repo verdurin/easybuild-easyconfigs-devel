@@ -1,0 +1,44 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Adam Huffman
+# The Francis Crick Institute
+# This is a version that provides dependencies for 
+# builds from upstream Git, develop branch
+
+easyblock = 'Conda'
+
+name = 'GimmeMotifs'
+version = '3'
+versionsuffix = '-develop'
+
+homepage = 'http://gimmemotifs.readthedocs.io/en/latest/'
+description = """GimmeMotifs is a de novo motif prediction pipeline, especially suited for
+ ChIP-seq datasets. It incorporates several existing motif prediction algorithms in an
+ ensemble method to predict motifs and clusters these motifs using the WIC similarity
+ scoring metric."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+requirements = "python=3 pip future numpy scipy matplotlib=2 statsmodels pymc scikit-learn seaborn jinja2 'pysam<0.11.2'"
+requirements += " pybedtools ucsc-genepredtobed lightning r xgboost r-robustrankaggreg pillow pyyaml meme diskcache"
+requirements += " six ucsc-bigbedtobed perl-algorithm-cluster"
+channels = ['bioconda', 'defaults', 'conda-forge']
+
+builddependencies = [('Anaconda2', '4.2.0')]
+
+dependencies = [('BEDTools', '2.26.0', '-foss-2016b')]
+
+#postinstallcmds = ["pip install configparser xdg xxhash &&  pip install git+https://github.com/simonvh/gimmemotifs.git@develop"]
+
+#sanity_check_paths = {
+#    'files': ['bin/gimme', 'bin/guess-ploidy.py', 'bin/intron_exon_reads.py'],
+#    'dirs': ['bin', 'conda-meta', 'data']
+#}
+
+#sanity_check_commands = ['gimme motifs -h']
+
+modloadmsg = "Owing to problems with one of the motif finding algorithms\n"
+modloadmsg += "please use the following parameter, to select which ones\n "
+modloadmsg += "to use:\n"
+modloadmsg += "-t Homer,MDmodule,MotifSampler,AMD,Improbizer,BioProspector,trawler,JASPAR,HMS,Posmo\n"
+
+moduleclass = 'bio'
